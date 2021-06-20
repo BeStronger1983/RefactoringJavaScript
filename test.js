@@ -2,7 +2,9 @@ const deepEqual = require('deep-equal');
 var wish = require('wish');
 
 function checkHand(hand) {
-    if(isPair(hand)){
+    if(isTwoPair(hand)){
+        return 'two pair';
+    }else if(isPair(hand)){
         return 'pair';
     }else if(isFullHouse(hand)){
         return 'full house';
@@ -149,6 +151,11 @@ function isFullHouse(hand) {
     return ( theCounts[0] === 3 && theCounts[1] === 2);
 }
 
+function isTwoPair(hand) {
+    var theCounts = allCounts(valuesFromHand(hand));
+    return ( theCounts[0] === 2 && theCounts[1] === 2);
+}
+
 describe('highestCount()', function(){
     it('返回陣列中同點數手牌的最大張數', function(){
         var result = highestCount(['2','4','4','4','2']);
@@ -212,6 +219,11 @@ describe('checkHand()', function (){
     it('處理葫蘆', function(){
         var result = checkHand(['2-D','2-H','3-H','3-D','3-C']);
         wish(result === 'full house');
+    });
+
+    it('處理兩對', function(){
+        var result = checkHand(['2-D','2-H','3-H','3-D','8-C']);
+        wish(result === 'two pair');
     });
 });
 
