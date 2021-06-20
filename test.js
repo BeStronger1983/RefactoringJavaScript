@@ -8,6 +8,8 @@ function checkHand(hand) {
         return 'three of a kind';
     }else if(isQuadruple(hand)){
         return 'four of a kind';
+    }else if(isStraightFlush(hand)){
+        return 'straight flush';
     }else if(isFlush(hand)){
         return 'flush';
     }else if(isStraight(hand)){
@@ -107,6 +109,10 @@ function noMultiples(values) {
     return highestCount(values)==1;
 }
 
+function isStraightFlush(hand) {
+    return isStraight(hand) && isFlush(hand);
+}
+
 describe('highestCount()', function(){
     it('返回陣列中同點數手牌的最大張數', function(){
         var result = highestCount(['2','4','4','4','2']);
@@ -160,6 +166,11 @@ describe('checkHand()', function (){
     it('處理順子', function(){
         var result = checkHand(['1-H','2-H','3-H','4-H','5-D']);
         wish(result === 'straight');
+    });
+
+    it('處理同花順', function(){
+        var result = checkHand(['1-H','2-H','3-H','4-H','5-H']);
+        wish(result === 'straight flush');
     });
 });
 
