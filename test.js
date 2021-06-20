@@ -10,6 +10,8 @@ function checkHand(hand) {
         return 'four of a kind';
     }else if(isFlush(hand)){
         return 'flush';
+    }else if(isStraight(hand)){
+        return 'straight';
     }else{
         return 'high card';
     }
@@ -88,6 +90,23 @@ function suitsFor(hand) {
     });
 }
 
+function isStraight(hand) {
+    return cardsInSequence(valuesFromHand(hand));
+}
+
+function cardsInSequence(values) {
+    var sortedValues = values.sort();
+    return fourAway(sortedValues) && noMultiples(values);
+}
+
+function fourAway(values) {
+    return (parseInt(values[values.length-1]) - parseInt(values[0])===4);
+}
+
+function noMultiples(values) {
+    return highestCount(values)==1;
+}
+
 describe('highestCount()', function(){
     it('返回陣列中同點數手牌的最大張數', function(){
         var result = highestCount(['2','4','4','4','2']);
@@ -133,9 +152,14 @@ describe('checkHand()', function (){
         wish(result === 'high card');
     });
 
-    it('同花', function(){
+    it('處理同花', function(){
         var result = checkHand(['2-H','5-H','9-H','7-H','3-H']);
         wish(result === 'flush');
+    });
+
+    it('處理順子', function(){
+        var result = checkHand(['1-H','2-H','3-H','4-H','5-D']);
+        wish(result === 'straight');
     });
 });
 
@@ -143,5 +167,29 @@ describe('allTheSameSuit()', function(){
     it('如果所有元素皆相同，回報 true', function(){
         var result = allTheSameSuit(['D','D','D','D','D']);
         wish(result);
+    });
+
+    it('如果所有元素並非全部相同，回報 false', function(){
+        var result = allTheSameSuit(['D','H','D','D','D']);
+        wish(!result);
+    });
+});
+
+describe('fourAway()', function(){
+    it('如果第一和最後的點數相差4，回報 true', function(){
+        var result = fourAway(['2','6']);
+        wish(result);
+    });
+});
+
+describe('noMultiples()', function(){
+    it('如果所有元素都不同，回報 true', function(){
+        var result = noMultiples(['2','6']);
+        wish(result);
+    });
+
+    it('如果存在兩個元素相同，回報 false', function(){
+        var result = noMultiples(['2','2']);
+        wish(!result);
     });
 });
