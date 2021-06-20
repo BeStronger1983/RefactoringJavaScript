@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "deep-equal": "^2.0.5",
+    "wish": "^1.0.1"
+  }
+}
