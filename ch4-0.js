@@ -1,3 +1,4 @@
+// 從零開始的程式碼
 var checkHand = function(){
     return 'pair';
 };
