@@ -14,18 +14,6 @@ var randomCard = function () {
     return randomValue() + "-" + randomSuit();
 };
 
-var randomHand = function () {
-    var cards = [];
-    cards.push(randomCard());
-    cards.push(randomCard());
-    cards.push(randomCard());
-    cards.push(randomCard());
-    cards.push(randomCard());
-    return cards;
-};
-
-console.log(randomHand());
-
 var buildCardArray = function () {
     var tempArray = [];
     for (var i = 0; i < values.length; i++) {
@@ -35,6 +23,19 @@ var buildCardArray = function () {
     }
     return tempArray;
 };
+
+var randomHand = function () {
+    var cards = [];
+    var cardArray = buildCardArray();
+    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
+    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
+    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
+    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
+    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
+    return cards;
+};
+
+console.log(randomHand());
 
 const deepEqual = require("deep-equal");
 const wish = require("wish");
