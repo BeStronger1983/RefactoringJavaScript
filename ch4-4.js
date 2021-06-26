@@ -27,11 +27,21 @@ var buildCardArray = function () {
 var randomHand = function () {
     var cards = [];
     var cardArray = buildCardArray();
-    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
-    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
-    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
-    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
-    cards.push(cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]);
+    cards.push(
+        cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]
+    );
+    cards.push(
+        cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]
+    );
+    cards.push(
+        cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]
+    );
+    cards.push(
+        cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]
+    );
+    cards.push(
+        cardArray.splice(Math.floor(Math.random() * cardArray.length), 1)[0]
+    );
     return cards;
 };
 
