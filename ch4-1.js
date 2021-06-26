@@ -1,3 +1,4 @@
+// 從零開始的 TDD 程式碼
 const deepEqual = require('deep-equal');
 var wish = require('wish');
 
