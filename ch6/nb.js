@@ -118,10 +118,10 @@ function classify(chords) {
 classify(["d", "g", "e", "dm"]);
 classify(["f#m7", "a", "dadd9", "dmaj7", "bm", "bm7", "d", "f#m"]);
 
-function fileName(){
+function fileName() {
     var theError = new Error("here I am");
     return theError.stack.match(/\/(\w+\.js)\:/)[1];
-};
+}
 
 console.log(`Welcome to ${fileName()}!`);
 
@@ -129,6 +129,6 @@ var text = `Lorem ipsum dolor sit amet, \n
 consectetur adipiscing elit, sed do eiusmod \n
 tempor incididunt ut labore et dolore magna aliqua. \n
 Ut enim ad minim veniam, quis nostrud exercitation \n
-ullamco laboris nisi ut aliquip ex ea commodo consequat.`
+ullamco laboris nisi ut aliquip ex ea commodo consequat.`;
 
 console.log(text);
