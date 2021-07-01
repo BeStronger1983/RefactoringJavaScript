@@ -144,3 +144,5 @@ var newArray = [2, 3, 4].map((element) => {
     return element * 2;
 });
 console.log(newArray);
+
+console.log([2, 3, 4].map(element => element * 2));
