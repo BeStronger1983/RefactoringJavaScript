@@ -133,3 +133,9 @@ Ut enim ad minim veniam, quis nostrud exercitation \n
 ullamco laboris nisi ut aliquip ex ea commodo consequat.`;
 
 console.log(text);
+
+var newArray = [];
+[2, 3, 4].forEach((element) => {
+    newArray.push(element * 2);
+});
+console.log(newArray);
