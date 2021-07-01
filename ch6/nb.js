@@ -1,3 +1,6 @@
+var easy = "easy";
+var medium = "medium";
+var hard = "hard";
 // songs
 imagine = ["c", "cmaj7", "f", "am", "dm", "g", "e7"];
 someWhereOverTheRainbow = ["c", "em", "f", "g", "am"];
@@ -82,15 +85,15 @@ function setProbabilityOfChordsInLabels() {
     });
 }
 
-train(imagine, "easy");
-train(someWhereOverTheRainbow, "easy");
-train(tooManyCooks, "easy");
-train(iWillFollowYouIntoTheDark, "medium");
-train(babyOneMoreTime, "medium");
-train(creep, "medium");
-train(paperBag, "hard");
-train(toxic, "hard");
-train(bulletproof, "hard");
+train(imagine, easy);
+train(someWhereOverTheRainbow, easy);
+train(tooManyCooks, easy);
+train(iWillFollowYouIntoTheDark, medium);
+train(babyOneMoreTime, medium);
+train(creep, medium);
+train(paperBag, hard);
+train(toxic, hard);
+train(bulletproof, hard);
 
 setLabelProbabilities();
 setChordCountsInLabels();
