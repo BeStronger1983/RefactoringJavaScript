@@ -34,15 +34,19 @@ var labelProbabilities = [];
 var chordCountsInLabels = {};
 var probabilityOfChordsInLabels = {};
 
+function checkAndInclude(chord) {
+    if (!allChords.includes(chord)) {
+        allChords.push(chord);
+    }
+}
+
 function train(chords, label) {
     var index;
     songs.push([label, chords]);
     labels.push(label);
-    chords.forEach(function (chord) {
-        if (!allChords.includes(chord)) {
-            allChords.push(chord);
-        }
-    });
+
+    chords.forEach(checkAndInclude);
+
     if (Object.keys(labelCounts).includes(label)) {
         labelCounts[label] = labelCounts[label] + 1;
     } else {
