@@ -126,3 +126,5 @@ var states = [
     false,
     true
 ];
+
+var states = 0b11111101;
