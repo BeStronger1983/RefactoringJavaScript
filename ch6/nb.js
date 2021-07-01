@@ -38,7 +38,7 @@ function train(chords, label) {
     songs.push([label, chords]);
     labels.push(label);
 
-    chords.forEach(chord => {
+    chords.forEach((chord) => {
         if (!allChords.includes(chord)) {
             allChords.push(chord);
         }
