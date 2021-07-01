@@ -120,7 +120,7 @@ classify(["f#m7", "a", "dadd9", "dmaj7", "bm", "bm7", "d", "f#m"]);
 
 function fileName(){
     var theError = new Error("here I am");
-    return /\/(\w+\.js)\:/.exec(theError.stack)[1];
-}
+    return theError.stack.match(/\/(\w+\.js)\:/)[1];
+};
 
 console.log(`Welcome to ${fileName()}!`);
