@@ -169,7 +169,6 @@ describe("the file", function () {
     });
 
     it("sets welcome message", function () {
-        console.log(`Welcome to ${fileName()}`);
         wish(welcomeMessage() === "Welcome to nb.js");
     });
 });
