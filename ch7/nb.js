@@ -83,23 +83,27 @@ function setProbabilityOfChordsInLabels() {
     });
 }
 
-train(imagine, easy);
-train(someWhereOverTheRainbow, easy);
-train(tooManyCooks, easy);
-train(iWillFollowYouIntoTheDark, medium);
-train(babyOneMoreTime, medium);
-train(creep, medium);
-train(paperBag, hard);
-train(toxic, hard);
-train(bulletproof, hard);
+function trainAll() {
+    train(imagine, easy);
+    train(someWhereOverTheRainbow, easy);
+    train(tooManyCooks, easy);
+    train(iWillFollowYouIntoTheDark, medium);
+    train(babyOneMoreTime, medium);
+    train(creep, medium);
+    train(paperBag, hard);
+    train(toxic, hard);
+    train(bulletproof, hard);
+
+    setLabelsAndProbabilites();
+}
+
+trainAll();
 
 function setLabelsAndProbabilites() {
     setLabelProbabilities();
     setChordCountsInLabels();
     setProbabilityOfChordsInLabels();
-};
-
-setLabelsAndProbabilites();
+}
 
 function classify(chords) {
     var smoothing = 1.01;
