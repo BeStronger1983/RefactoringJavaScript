@@ -37,8 +37,6 @@ function setSongs() {
     bulletproof = ["d#m", "g#", "b", "f#", "g#m", "c#"];
 }
 
-setSongs();
-
 var songs = [];
 var allChords = new Set();
 var labelCounts = new Map();
@@ -91,6 +89,8 @@ function setProbabilityOfChordsInLabels() {
 }
 
 function trainAll() {
+    setSongs();
+
     train(imagine, easy);
     train(someWhereOverTheRainbow, easy);
     train(tooManyCooks, easy);
