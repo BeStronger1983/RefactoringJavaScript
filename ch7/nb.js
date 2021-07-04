@@ -93,9 +93,13 @@ train(paperBag, hard);
 train(toxic, hard);
 train(bulletproof, hard);
 
-setLabelProbabilities();
-setChordCountsInLabels();
-setProbabilityOfChordsInLabels();
+function setLabelsAndProbabilites() {
+    setLabelProbabilities();
+    setChordCountsInLabels();
+    setProbabilityOfChordsInLabels();
+};
+
+setLabelsAndProbabilites();
 
 function classify(chords) {
     var smoothing = 1.01;
