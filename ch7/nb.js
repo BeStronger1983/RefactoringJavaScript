@@ -136,3 +136,11 @@ var states = 0b11111101;
 function stateIsOk(state) {
     return state === 0b11111101;
 }
+
+var wish = require("wish");
+
+describe("the file", function () {
+    it("works", function () {
+        wish(true);
+    });
+});
