@@ -1,3 +1,7 @@
+function welcomeMessage() {
+    return `Welcome to ${fileName()}`;
+}
+
 function fileName() {
     var theError = new Error("here I am");
     return theError.stack.match(/\/(\w+\.js)\:/)[1];
@@ -166,6 +170,6 @@ describe("the file", function () {
 
     it("sets welcome message", function () {
         console.log(`Welcome to ${fileName()}`);
-        wish(welcomeMessage() === 'Welcome to nb.js');
+        wish(welcomeMessage() === "Welcome to nb.js");
     });
 });
