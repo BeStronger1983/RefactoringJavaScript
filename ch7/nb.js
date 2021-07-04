@@ -11,29 +11,33 @@ var easy = "easy";
 var medium = "medium";
 var hard = "hard";
 
-imagine = ["c", "cmaj7", "f", "am", "dm", "g", "e7"];
-someWhereOverTheRainbow = ["c", "em", "f", "g", "am"];
-tooManyCooks = ["c", "g", "f"];
-iWillFollowYouIntoTheDark = ["f", "dm", "bb", "c", "a", "bbm"];
-babyOneMoreTime = ["cm", "g", "bb", "eb", "fm", "ab"];
-creep = ["g", "gsus4", "b", "bsus4", "c", "cmsus4", "cm6"];
-paperBag = [
-    "bm7",
-    "e",
-    "c",
-    "g",
-    "b7",
-    "f",
-    "em",
-    "a",
-    "cmaj7",
-    "em7",
-    "a7",
-    "f7",
-    "b",
-];
-toxic = ["cm", "eb", "g", "cdim", "eb7", "d7", "db7", "ab", "gmaj7", "g7"];
-bulletproof = ["d#m", "g#", "b", "f#", "g#m", "c#"];
+function setSongs() {
+    imagine = ["c", "cmaj7", "f", "am", "dm", "g", "e7"];
+    someWhereOverTheRainbow = ["c", "em", "f", "g", "am"];
+    tooManyCooks = ["c", "g", "f"];
+    iWillFollowYouIntoTheDark = ["f", "dm", "bb", "c", "a", "bbm"];
+    babyOneMoreTime = ["cm", "g", "bb", "eb", "fm", "ab"];
+    creep = ["g", "gsus4", "b", "bsus4", "c", "cmsus4", "cm6"];
+    paperBag = [
+        "bm7",
+        "e",
+        "c",
+        "g",
+        "b7",
+        "f",
+        "em",
+        "a",
+        "cmaj7",
+        "em7",
+        "a7",
+        "f7",
+        "b",
+    ];
+    toxic = ["cm", "eb", "g", "cdim", "eb7", "d7", "db7", "ab", "gmaj7", "g7"];
+    bulletproof = ["d#m", "g#", "b", "f#", "g#m", "c#"];
+}
+
+setSongs();
 
 var songs = [];
 var allChords = new Set();
