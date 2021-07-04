@@ -1,12 +1,3 @@
-function welcomeMessage() {
-    return `Welcome to ${fileName()}`;
-}
-
-function fileName() {
-    var theError = new Error("here I am");
-    return theError.stack.match(/\/(\w+\.js)\:/)[1];
-}
-
 function setDifficulties() {
     easy = "easy";
     medium = "medium";
@@ -135,30 +126,6 @@ function classify(chords) {
     return classified;
 }
 
-classify(["d", "g", "e", "dm"]);
-classify(["f#m7", "a", "dadd9", "dmaj7", "bm", "bm7", "d", "f#m"]);
-
-var states = [true, true, true, true, true, true, false, true];
-
-function stateIsOk(state) {
-    return (
-        state[0] &&
-        state[1] &&
-        state[2] &&
-        state[3] &&
-        state[4] &&
-        state[5] &&
-        !state[6] &&
-        state[7]
-    );
-}
-
-var states = 0b11111101;
-
-function stateIsOk(state) {
-    return state === 0b11111101;
-}
-
 var wish = require("wish");
 
 describe("the file", function () {
@@ -187,10 +154,6 @@ describe("the file", function () {
         wish(classified.get("easy") === 2.023094827160494);
         wish(classified.get("medium") === 1.855758613168724);
         wish(classified.get("hard") === 1.855758613168724);
-    });
-
-    it("sets welcome message", function () {
-        wish(welcomeMessage() === "Welcome to nb.js");
     });
 
     it("label probabilities", function () {
