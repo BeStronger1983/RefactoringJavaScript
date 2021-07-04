@@ -100,8 +100,6 @@ function trainAll() {
     setLabelsAndProbabilites();
 }
 
-trainAll();
-
 function setLabelsAndProbabilites() {
     setLabelProbabilities();
     setChordCountsInLabels();
@@ -154,6 +152,8 @@ function stateIsOk(state) {
 var wish = require("wish");
 
 describe("the file", function () {
+    trainAll();
+
     it("classifies", function () {
         var classified = classify([
             "f#m7",
