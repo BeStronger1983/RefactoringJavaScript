@@ -8,42 +8,31 @@ var classifier = {
 };
 
 var songList = {
+    difficulties: ["easy", "medium", "hard"],
     songs: [],
     addSong: function (name, chords, difficulty) {
-        this.songs.push({ name: name, chords: chords, difficulty: difficulty });
+        this.songs.push({
+            name: name,
+            chords: chords,
+            difficulty: this.difficulties[difficulty],
+        });
     },
 };
 
 function setSongs() {
-    var easy = "easy";
-    var medium = "medium";
-    var hard = "hard";
-
-    songList.addSong(
-        "imagine",
-        ["c", "cmaj7", "f", "am", "dm", "g", "e7"],
-        easy
-    );
-    songList.addSong(
-        "someWhereOverTheRainbow",
-        ["c", "em", "f", "g", "am"],
-        easy
-    );
-    songList.addSong("tooManyCooks", ["c", "g", "f"], easy);
+    songList.addSong("imagine", ["c", "cmaj7", "f", "am", "dm", "g", "e7"], 0);
+    songList.addSong("someWhereOverTheRainbow", ["c", "em", "f", "g", "am"], 0);
+    songList.addSong("tooManyCooks", ["c", "g", "f"], 0);
     songList.addSong(
         "iWillFollowYouIntoTheDark",
         ["f", "dm", "bb", "c", "a", "bbm"],
-        medium
+        1
     );
-    songList.addSong(
-        "babyOneMoreTime",
-        ["cm", "g", "bb", "eb", "fm", "ab"],
-        medium
-    );
+    songList.addSong("babyOneMoreTime", ["cm", "g", "bb", "eb", "fm", "ab"], 1);
     songList.addSong(
         "creep",
         ["g", "gsus4", "b", "bsus4", "c", "cmsus4", "cm6"],
-        medium
+        1
     );
     songList.addSong(
         "paperBag",
@@ -62,18 +51,14 @@ function setSongs() {
             "f7",
             "b",
         ],
-        hard
+        2
     );
     songList.addSong(
         "toxic",
         ["cm", "eb", "g", "cdim", "eb7", "d7", "db7", "ab", "gmaj7", "g7"],
-        hard
+        2
     );
-    songList.addSong(
-        "bulletproof",
-        ["d#m", "g#", "b", "f#", "g#m", "c#"],
-        hard
-    );
+    songList.addSong("bulletproof", ["d#m", "g#", "b", "f#", "g#m", "c#"], 2);
 }
 
 function train(chords, label) {
