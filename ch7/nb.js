@@ -15,6 +15,10 @@ var songList = {
 };
 
 function setSongs() {
+    var easy = "easy";
+    var medium = "medium";
+    var hard = "hard";
+
     songList.addSong(
         "imagine",
         ["c", "cmaj7", "f", "am", "dm", "g", "e7"],
@@ -72,12 +76,6 @@ function setSongs() {
     );
 }
 
-function setDifficulties() {
-    easy = "easy";
-    medium = "medium";
-    hard = "hard";
-}
-
 function train(chords, label) {
     classifier.songs.push({ label, chords });
     chords.forEach((chord) => classifier.allChords.add(chord));
@@ -132,7 +130,6 @@ function setProbabilityOfChordsInLabels() {
 }
 
 function trainAll() {
-    setDifficulties();
     setSongs();
 
     songList.songs.forEach(function (song) {
