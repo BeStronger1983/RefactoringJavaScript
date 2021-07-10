@@ -11,9 +11,7 @@ const classifier = {
         this.labelProbabilities.forEach(function (_probabilities, difficulty) {
             const totalLikelihood = chords.reduce(
                 function (total, chord) {
-                    const probabilityOfChordInLabel = this.probabilityOfChordsInLabels.get(
-                        difficulty
-                    )[chord];
+                    const probabilityOfChordInLabel = this.probabilityOfChordsInLabels.get(difficulty)[chord];
                     if (probabilityOfChordInLabel) {
                         return total * (probabilityOfChordInLabel + smoothing);
                     } else {
@@ -46,10 +44,7 @@ function train(chords, label) {
     chords.forEach((chord) => classifier.allChords.add(chord));
 
     if (Array.from(classifier.labelCounts.keys()).includes(label)) {
-        classifier.labelCounts.set(
-            label,
-            classifier.labelCounts.get(label) + 1
-        );
+        classifier.labelCounts.set(label, classifier.labelCounts.get(label) + 1);
     } else {
         classifier.labelCounts.set(label, 1);
     }
@@ -57,10 +52,7 @@ function train(chords, label) {
 
 function setLabelProbabilities() {
     classifier.labelCounts.forEach(function (_count, label) {
-        classifier.labelProbabilities.set(
-            label,
-            classifier.labelCounts.get(label) / classifier.songs.length
-        );
+        classifier.labelProbabilities.set(label, classifier.labelCounts.get(label) / classifier.songs.length);
     });
 }
 
@@ -81,15 +73,9 @@ function setChordCountsInLabels() {
 
 function setProbabilityOfChordsInLabels() {
     classifier.probabilityOfChordsInLabels = classifier.chordCountsInLabels;
-    classifier.probabilityOfChordsInLabels.forEach(function (
-        _chords,
-        difficulty
-    ) {
-        Object.keys(
-            classifier.probabilityOfChordsInLabels.get(difficulty)
-        ).forEach(function (chord) {
-            classifier.probabilityOfChordsInLabels.get(difficulty)[chord] /=
-                classifier.songs.length;
+    classifier.probabilityOfChordsInLabels.forEach(function (_chords, difficulty) {
+        Object.keys(classifier.probabilityOfChordsInLabels.get(difficulty)).forEach(function (chord) {
+            classifier.probabilityOfChordsInLabels.get(difficulty)[chord] /= classifier.songs.length;
         });
     });
 }
@@ -114,56 +100,17 @@ describe("the file", function () {
     songList.addSong("imagine", ["c", "cmaj7", "f", "am", "dm", "g", "e7"], 0);
     songList.addSong("someWhereOverTheRainbow", ["c", "em", "f", "g", "am"], 0);
     songList.addSong("tooManyCooks", ["c", "g", "f"], 0);
-    songList.addSong(
-        "iWillFollowYouIntoTheDark",
-        ["f", "dm", "bb", "c", "a", "bbm"],
-        1
-    );
+    songList.addSong("iWillFollowYouIntoTheDark", ["f", "dm", "bb", "c", "a", "bbm"], 1);
     songList.addSong("babyOneMoreTime", ["cm", "g", "bb", "eb", "fm", "ab"], 1);
-    songList.addSong(
-        "creep",
-        ["g", "gsus4", "b", "bsus4", "c", "cmsus4", "cm6"],
-        1
-    );
-    songList.addSong(
-        "paperBag",
-        [
-            "bm7",
-            "e",
-            "c",
-            "g",
-            "b7",
-            "f",
-            "em",
-            "a",
-            "cmaj7",
-            "em7",
-            "a7",
-            "f7",
-            "b",
-        ],
-        2
-    );
-    songList.addSong(
-        "toxic",
-        ["cm", "eb", "g", "cdim", "eb7", "d7", "db7", "ab", "gmaj7", "g7"],
-        2
-    );
+    songList.addSong("creep", ["g", "gsus4", "b", "bsus4", "c", "cmsus4", "cm6"], 1);
+    songList.addSong("paperBag", ["bm7", "e", "c", "g", "b7", "f", "em", "a", "cmaj7", "em7", "a7", "f7", "b"], 2);
+    songList.addSong("toxic", ["cm", "eb", "g", "cdim", "eb7", "d7", "db7", "ab", "gmaj7", "g7"], 2);
     songList.addSong("bulletproof", ["d#m", "g#", "b", "f#", "g#m", "c#"], 2);
 
     trainAll();
 
     it("classifies", function () {
-        const classified = classifier.classify([
-            "f#m7",
-            "a",
-            "dadd9",
-            "dmaj7",
-            "bm",
-            "bm7",
-            "d",
-            "f#m",
-        ]);
+        const classified = classifier.classify(["f#m7", "a", "dadd9", "dmaj7", "bm", "bm7", "d", "f#m"]);
 
         wish(classified.get("easy") === 1.3433333333333333);
         wish(classified.get("medium") === 1.5060259259259259);
@@ -180,9 +127,7 @@ describe("the file", function () {
 
     it("label probabilities", function () {
         wish(classifier.labelProbabilities.get("easy") === 0.3333333333333333);
-        wish(
-            classifier.labelProbabilities.get("medium") === 0.3333333333333333
-        );
+        wish(classifier.labelProbabilities.get("medium") === 0.3333333333333333);
         wish(classifier.labelProbabilities.get("hard") === 0.3333333333333333);
     });
 });
