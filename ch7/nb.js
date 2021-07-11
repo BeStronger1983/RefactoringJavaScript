@@ -21,11 +21,8 @@ const classifier = {
         );
     },
     valueForChordDifficulty(difficulty, chord) {
-        if (this.probabilityOfChordsInLabels.get(difficulty)[chord]) {
-            return this.probabilityOfChordsInLabels.get(difficulty)[chord] + this.smoothing;
-        } else {
-            return 1;
-        }
+        const value = this.probabilityOfChordsInLabels.get(difficulty)[chord];
+        return value ? value + this.smoothing : 1;
     },
 };
 
