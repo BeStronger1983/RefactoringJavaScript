@@ -14,15 +14,18 @@ const classifier = {
                 return [
                     difficulty,
                     chords.reduce((total, chord) => {
-                        if (this.probabilityOfChordsInLabels.get(difficulty)[chord]) {
-                            return total * (this.probabilityOfChordsInLabels.get(difficulty)[chord] + this.smoothing);
-                        } else {
-                            return total;
-                        }
+                        return total * this.valueForChordDifficulty(difficulty, chord);
                     }, this.labelProbabilities.get(difficulty) + this.smoothing),
                 ];
             })
         );
+    },
+    valueForChordDifficulty(difficulty, chord) {
+        if (this.probabilityOfChordsInLabels.get(difficulty)[chord]) {
+            return this.probabilityOfChordsInLabels.get(difficulty)[chord] + this.smoothing;
+        } else {
+            return 1;
+        }
     },
 };
 
