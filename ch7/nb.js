@@ -25,9 +25,7 @@ const classifier = {
         return value ? value + this.smoothing : 1;
     },
     chordCountForDifficulty: function (difficulty, testChord) {
-        let counter = 0;
-
-        songList.songs.forEach(function (song) {
+        return songList.songs.reduce(function (counter, song) {
             if (song.difficulty === difficulty) {
                 song.chords.forEach(function (chord) {
                     if (chord === testChord) {
@@ -35,9 +33,9 @@ const classifier = {
                     }
                 });
             }
-        });
 
-        return counter;
+            return counter;
+        }, 0);
     },
 };
 
