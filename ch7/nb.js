@@ -2,7 +2,6 @@ const classifier = {
     allChords: new Set(),
     labelCounts: new Map(),
     labelProbabilities: new Map(),
-    chordCountsInLabels: new Map(),
     smoothing: 1.01,
     classify: function (chords) {
         return new Map(
@@ -19,26 +18,26 @@ const classifier = {
         );
     },
     likelihoodFromChord: function (difficulty, chord) {
-        return this.chordCountsInLabels.get(difficulty)[chord] / songList.songs.length;
+        return this.chordCountForDifficulty(difficulty, chord) / songList.songs.length;
     },
     valueForChordDifficulty(difficulty, chord) {
         const value = this.likelihoodFromChord(difficulty, chord);
         return value ? value + this.smoothing : 1;
     },
-    setChordCountsInLabels: function () {
-        songList.songs.forEach(function (song) {
-            if (this.chordCountsInLabels.get(song.difficulty) === undefined) {
-                this.chordCountsInLabels.set(song.difficulty, {});
-            }
+    chordCountForDifficulty: function (difficulty, testChord) {
+        let counter = 0;
 
-            song.chords.forEach(function (chord) {
-                if (this.chordCountsInLabels.get(song.difficulty)[chord] > 0) {
-                    this.chordCountsInLabels.get(song.difficulty)[chord] += 1;
-                } else {
-                    this.chordCountsInLabels.get(song.difficulty)[chord] = 1;
-                }
-            }, this);
-        }, this);
+        songList.songs.forEach(function (song) {
+            if (song.difficulty === difficulty) {
+                song.chords.forEach(function (chord) {
+                    if (chord === testChord) {
+                        counter = counter + 1;
+                    }
+                });
+            }
+        });
+
+        return counter;
     },
 };
 
@@ -75,12 +74,7 @@ function trainAll() {
         train(song.chords, song.difficulty);
     });
 
-    setLabelsAndProbabilites();
-}
-
-function setLabelsAndProbabilites() {
     setLabelProbabilities();
-    classifier.setChordCountsInLabels();
 }
 
 const wish = require("wish");
