@@ -19,15 +19,11 @@ const classifier = {
             })
         );
     },
-    setProbabilityOfChordsInLabels: function () {
-        this.chordCountsInLabels.forEach(function (_chords, difficulty) {
-            Object.keys(this.chordCountsInLabels.get(difficulty)).forEach(function (chord) {
-                this.chordCountsInLabels.get(difficulty)[chord] /= this.songs.length;
-            }, this);
-        }, this);
+    likelihoodFromChord: function (difficulty, chord) {
+        return this.chordCountsInLabels.get(difficulty)[chord] / this.songs.length;
     },
     valueForChordDifficulty(difficulty, chord) {
-        const value = this.chordCountsInLabels.get(difficulty)[chord];
+        const value = this.likelihoodFromChord(difficulty, chord);
         return value ? value + this.smoothing : 1;
     },
 };
@@ -87,7 +83,6 @@ function trainAll() {
 function setLabelsAndProbabilites() {
     setLabelProbabilities();
     setChordCountsInLabels();
-    classifier.setProbabilityOfChordsInLabels();
 }
 
 const wish = require("wish");
