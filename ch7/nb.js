@@ -1,5 +1,4 @@
 const classifier = {
-    songs: [],
     allChords: new Set(),
     labelCounts: new Map(),
     labelProbabilities: new Map(),
@@ -20,7 +19,7 @@ const classifier = {
         );
     },
     likelihoodFromChord: function (difficulty, chord) {
-        return this.chordCountsInLabels.get(difficulty)[chord] / this.songs.length;
+        return this.chordCountsInLabels.get(difficulty)[chord] / songList.songs.length;
     },
     valueForChordDifficulty(difficulty, chord) {
         const value = this.likelihoodFromChord(difficulty, chord);
@@ -41,7 +40,6 @@ const songList = {
 };
 
 function train(chords, label) {
-    classifier.songs.push({ label, chords });
     chords.forEach((chord) => classifier.allChords.add(chord));
 
     if (Array.from(classifier.labelCounts.keys()).includes(label)) {
@@ -53,20 +51,20 @@ function train(chords, label) {
 
 function setLabelProbabilities() {
     classifier.labelCounts.forEach(function (_count, label) {
-        classifier.labelProbabilities.set(label, classifier.labelCounts.get(label) / classifier.songs.length);
+        classifier.labelProbabilities.set(label, classifier.labelCounts.get(label) / songList.songs.length);
     });
 }
 
 function setChordCountsInLabels() {
-    classifier.songs.forEach(function (song) {
-        if (classifier.chordCountsInLabels.get(song.label) === undefined) {
-            classifier.chordCountsInLabels.set(song.label, {});
+    songList.songs.forEach(function (song) {
+        if (classifier.chordCountsInLabels.get(song.difficulty) === undefined) {
+            classifier.chordCountsInLabels.set(song.difficulty, {});
         }
         song.chords.forEach(function (chord) {
-            if (classifier.chordCountsInLabels.get(song.label)[chord] > 0) {
-                classifier.chordCountsInLabels.get(song.label)[chord] += 1;
+            if (classifier.chordCountsInLabels.get(song.difficulty)[chord] > 0) {
+                classifier.chordCountsInLabels.get(song.difficulty)[chord] += 1;
             } else {
-                classifier.chordCountsInLabels.get(song.label)[chord] = 1;
+                classifier.chordCountsInLabels.get(song.difficulty)[chord] = 1;
             }
         });
     });
