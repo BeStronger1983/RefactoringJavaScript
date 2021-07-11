@@ -14,10 +14,8 @@ const classifier = {
                 return [
                     difficulty,
                     chords.reduce((total, chord) => {
-                        const probabilityOfChordsInLabel = this.probabilityOfChordsInLabels.get(difficulty)[chord];
-
-                        if (probabilityOfChordsInLabel) {
-                            return total * (probabilityOfChordsInLabel + this.smoothing);
+                        if (this.probabilityOfChordsInLabels.get(difficulty)[chord]) {
+                            return total * (this.probabilityOfChordsInLabels.get(difficulty)[chord] + this.smoothing);
                         } else {
                             return total;
                         }
