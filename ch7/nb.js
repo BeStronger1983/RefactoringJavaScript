@@ -11,17 +11,18 @@ const classifier = {
             Array.from(this.labelProbabilities.entries()).map((labelWithProbability) => {
                 const difficulty = labelWithProbability[0];
 
-                const totalLikelihood = chords.reduce((total, chord) => {
-                    const probabilityOfChordsInLabel = this.probabilityOfChordsInLabels.get(difficulty)[chord];
+                return [
+                    difficulty,
+                    chords.reduce((total, chord) => {
+                        const probabilityOfChordsInLabel = this.probabilityOfChordsInLabels.get(difficulty)[chord];
 
-                    if (probabilityOfChordsInLabel) {
-                        return total * (probabilityOfChordsInLabel + this.smoothing);
-                    } else {
-                        return total;
-                    }
-                }, this.labelProbabilities.get(difficulty) + this.smoothing);
-
-                return [difficulty, totalLikelihood];
+                        if (probabilityOfChordsInLabel) {
+                            return total * (probabilityOfChordsInLabel + this.smoothing);
+                        } else {
+                            return total;
+                        }
+                    }, this.labelProbabilities.get(difficulty) + this.smoothing),
+                ];
             })
         );
     },
