@@ -1,5 +1,4 @@
 const classifier = {
-    allChords: new Set(),
     labelCounts: new Map(),
     labelProbabilities: new Map(),
     smoothing: 1.01,
@@ -43,7 +42,7 @@ const classifier = {
         this.setLabelProbabilities();
     },
     train: function (chords, label) {
-        chords.forEach((chord) => this.allChords.add(chord));
+        chords.forEach((chord) => songList.allChords.add(chord));
 
         if (Array.from(this.labelCounts.keys()).includes(label)) {
             this.labelCounts.set(label, this.labelCounts.get(label) + 1);
@@ -59,6 +58,7 @@ const classifier = {
 };
 
 const songList = {
+    allChords: new Set(),
     difficulties: ["easy", "medium", "hard"],
     songs: [],
     addSong: function (name, chords, difficulty) {
