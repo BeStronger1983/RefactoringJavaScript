@@ -71,7 +71,7 @@ const classifier = {
 
 const wish = require("wish");
 
-describe("the file", function () {
+describe("the file", () => {
     classifier.songList.addSong("imagine", ["c", "cmaj7", "f", "am", "dm", "g", "e7"], 0);
     classifier.songList.addSong("someWhereOverTheRainbow", ["c", "em", "f", "g", "am"], 0);
     classifier.songList.addSong("tooManyCooks", ["c", "g", "f"], 0);
@@ -84,7 +84,7 @@ describe("the file", function () {
 
     classifier.trainAll();
 
-    it("classifies", function () {
+    it("classifies", () => {
         const classified = classifier.classify(["f#m7", "a", "dadd9", "dmaj7", "bm", "bm7", "d", "f#m"]);
 
         wish(classified.get("easy") === 1.3433333333333333);
@@ -92,7 +92,7 @@ describe("the file", function () {
         wish(classified.get("hard") === 1.6884223991769547);
     });
 
-    it("classifies again", function () {
+    it("classifies again", () => {
         const classified = classifier.classify(["d", "g", "e", "dm"]);
 
         wish(classified.get("easy") === 2.023094827160494);
@@ -100,7 +100,7 @@ describe("the file", function () {
         wish(classified.get("hard") === 1.855758613168724);
     });
 
-    it("label probabilities", function () {
+    it("label probabilities", () => {
         wish(classifier.labelProbabilities.get("easy") === 0.3333333333333333);
         wish(classifier.labelProbabilities.get("medium") === 0.3333333333333333);
         wish(classifier.labelProbabilities.get("hard") === 0.3333333333333333);
