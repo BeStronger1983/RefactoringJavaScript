@@ -59,3 +59,24 @@ console.log(sec.secret); // undefined
 console.log(sec.notSecret()); // 'sekrit'
 console.log(sec.totallyNotSecret); // undefined
 console.log(totallyNotSecret); // "I'm defined in the global scope"
+
+// Revealing Module Pattern
+var secretTemplate = (function(){
+  const secret = 'sekrit';
+  const secretFunction = function(){
+    return secret;
+  };
+  totallyNotSecret = "I'm defined in the global scope";
+  const normalInfo = 'this is normal';
+  const notSecret = function(){
+    return secret;
+  };
+  return {normalInfo, notSecret};
+})();
+const secr = Object.create(secretTemplate);
+console.log(secr.normalInfo); // 'this is normal'
+console.log(secr.secret); // undefined
+// console.log(secr.secretFunction()); // error
+console.log(secr.notSecret()); // 'sekrit'
+console.log(secr.totallyNotSecret); // undefined
+console.log(totallyNotSecret); // "I'm defined in the global scope"
