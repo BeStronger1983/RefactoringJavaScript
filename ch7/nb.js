@@ -1,15 +1,17 @@
-const classifierTemplate = {
-    labelCounts: new Map(),
-    labelProbabilities: new Map(),
-    smoothing: 1.01,
-    songList: {
-        allChords: new Set(),
-        difficulties: ["easy", "medium", "hard"],
-        songs: [],
-        addSong(name, chords, difficulty) {
-            this.songs.push({ name, chords, difficulty: this.difficulties[difficulty] });
-        },
-    },
+class Classifier {
+    constructor() {
+        this.songList = {
+            allChords: new Set(),
+            difficulties: ["easy", "medium", "hard"],
+            songs: [],
+            addSong(name, chords, difficulty) {
+                this.songs.push({ name, chords, difficulty: this.difficulties[difficulty] });
+            },
+        };
+        this.labelCounts = new Map();
+        this.labelProbabilities = new Map();
+        this.smoothing = 1.01;
+    }
     chordCountForDifficulty(difficulty, testChord) {
         return this.songList.songs.reduce((counter, song) => {
             if (song.difficulty === difficulty) {
@@ -18,21 +20,21 @@ const classifierTemplate = {
 
             return counter;
         }, 0);
-    },
+    }
     likelihoodFromChord(difficulty, chord) {
         return this.chordCountForDifficulty(difficulty, chord) / this.songList.songs.length;
-    },
+    }
     valueForChordDifficulty(difficulty, chord) {
         const value = this.likelihoodFromChord(difficulty, chord);
         return value ? value + this.smoothing : 1;
-    },
+    }
     trainAll() {
         this.songList.songs.forEach((song) => {
             this.train(song.chords, song.difficulty);
         });
 
         this.setLabelProbabilities();
-    },
+    }
     train(chords, label) {
         chords.forEach((chord) => this.songList.allChords.add(chord));
 
@@ -41,12 +43,12 @@ const classifierTemplate = {
         } else {
             this.labelCounts.set(label, 1);
         }
-    },
+    }
     setLabelProbabilities() {
         this.labelCounts.forEach((_count, label) => {
             this.labelProbabilities.set(label, this.labelCounts.get(label) / this.songList.songs.length);
         });
-    },
+    }
     classify(chords) {
         return new Map(
             Array.from(this.labelProbabilities.entries()).map((labelWithProbability) => {
@@ -60,13 +62,13 @@ const classifierTemplate = {
                 ];
             })
         );
-    },
-};
+    }
+}
 
 const wish = require("wish");
 
 describe("the file", () => {
-    var classifier = Object.create(classifierTemplate);
+    const classifier = new Classifier();
 
     classifier.songList.addSong("imagine", ["c", "cmaj7", "f", "am", "dm", "g", "e7"], 0);
     classifier.songList.addSong("someWhereOverTheRainbow", ["c", "em", "f", "g", "am"], 0);
