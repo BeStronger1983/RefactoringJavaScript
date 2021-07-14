@@ -7,11 +7,7 @@ const classifier = {
         difficulties: ["easy", "medium", "hard"],
         songs: [],
         addSong(name, chords, difficulty) {
-            this.songs.push({
-                name: name,
-                chords: chords,
-                difficulty: this.difficulties[difficulty],
-            });
+            this.songs.push({ name, chords, difficulty: this.difficulties[difficulty] });
         },
     },
     chordCountForDifficulty(difficulty, testChord) {
