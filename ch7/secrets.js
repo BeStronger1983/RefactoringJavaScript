@@ -40,7 +40,7 @@ console.log(se.notSecret()); // 'sekrit'
 console.log(se.totallyNotSecret); // undefined
 console.log(totallyNotSecret); // "I'm defined in the global scope"
 
-// Factory Function (concise)
+// Module Pattern
 var secretTemplate = (function(){
   const secret = 'sekrit';
   const secretFunction = function(){
