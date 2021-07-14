@@ -1,4 +1,4 @@
-const classifier = {
+const classifierTemplate = {
     labelCounts: new Map(),
     labelProbabilities: new Map(),
     smoothing: 1.01,
@@ -66,6 +66,8 @@ const classifier = {
 const wish = require("wish");
 
 describe("the file", () => {
+    var classifier = Object.create(classifierTemplate);
+
     classifier.songList.addSong("imagine", ["c", "cmaj7", "f", "am", "dm", "g", "e7"], 0);
     classifier.songList.addSong("someWhereOverTheRainbow", ["c", "em", "f", "g", "am"], 0);
     classifier.songList.addSong("tooManyCooks", ["c", "g", "f"], 0);
