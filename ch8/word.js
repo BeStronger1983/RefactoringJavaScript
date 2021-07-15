@@ -1,27 +1,28 @@
-class Word {
-    constructor(word, language, lookUpUrl) {
-        this.word = word;
-        this.language = language;
-        this.lookUpUrl = lookUpUrl;
-    }
-    count() {
+function Word(word, language, lookUpUrl) {
+    this.word = word;
+    this.language = language;
+    this.lookUpUrl = lookUpUrl;
+    this.count = function () {
         return this.word.length;
-    }
-    lookUp() {
+    };
+    this.lookUp = function () {
         return this.lookUpUrl + this.word;
-    }
+    };
 }
 
-class EnglishWord extends Word {
-    constructor(word) {
-        super(word, "English", "https://en.wiktionary.org/wiki/");
-    }
+function EnglishWord(word) {
+    Word.call(this, word, "English", "https://en.wiktionary.org/wiki/");
 }
-class JapaneseWord extends Word {
-    constructor(word) {
-        super(word, "Japanese", "http://jisho.org/search/");
-    }
+
+function JapaneseWord(word) {
+    Word.call(this, word, "Japanese", "http://jisho.org/search/");
 }
+
+JapaneseWord.prototype = Object.create(Word.prototype);
+JapaneseWord.prototype.constructor = JapaneseWord;
+
+EnglishWord.prototype = Object.create(Word.prototype);
+EnglishWord.prototype.constructor = EnglishWord;
 
 const japaneseWord = new JapaneseWord("犬");
 const englishWord = new EnglishWord("dog");
@@ -52,9 +53,10 @@ wish(japaneseWord instanceof Word);
 wish(!(JapaneseWord instanceof Word));
 
 wish(japaneseWord.constructor === JapaneseWord);
-wish(Object.getPrototypeOf(JapaneseWord) === Word);
+// wish(Object.getPrototypeOf(JapaneseWord) === Word);
+console.log(Object.getPrototypeOf(JapaneseWord));
 
 // 模糊點
-wish(deepEqual(Object.getPrototypeOf(japaneseWord), {}));
+// wish(deepEqual(Object.getPrototypeOf(japaneseWord), {}));
 console.log(Object.getPrototypeOf(japaneseWord));
 // 回報 JapaneseWord {}
