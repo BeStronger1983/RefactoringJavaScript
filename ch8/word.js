@@ -16,13 +16,15 @@ class Word {
 
 class EnglishWord extends Word {
     constructor(word) {
-        super(word);
+        super();
+        this.word = word;
         this.language = "English";
     }
 }
 class JapaneseWord extends Word {
     constructor(word) {
-        super(word);
+        super();
+        this.word = word;
         this.language = "Japanese";
     }
 }
