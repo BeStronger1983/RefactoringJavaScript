@@ -6,7 +6,7 @@ class Word {
         return this.word.length;
     }
     lookUp() {
-        if (this instanceof JapaneseWord) {
+        if (this.language === "Japanese") {
             return `http://jisho.org/search/${this.word}`;
         } else {
             return `https://en.wiktionary.org/wiki/${this.word}`;
@@ -14,8 +14,18 @@ class Word {
     }
 }
 
-class EnglishWord extends Word {}
-class JapaneseWord extends Word {}
+class EnglishWord extends Word {
+    constructor(word) {
+        super(word);
+        this.language = "English";
+    }
+}
+class JapaneseWord extends Word {
+    constructor(word) {
+        super(word);
+        this.language = "Japanese";
+    }
+}
 
 const japaneseWord = new JapaneseWord("犬");
 const englishWord = new EnglishWord("dog");
