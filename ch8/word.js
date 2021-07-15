@@ -1,7 +1,8 @@
 class Word {
-    constructor(word, language) {
+    constructor(word, language, lookUpUrl) {
         this.word = word;
         this.language = language;
+        this.lookUpUrl = lookUpUrl;
     }
     count() {
         return this.word.length;
@@ -13,14 +14,12 @@ class Word {
 
 class EnglishWord extends Word {
     constructor(word) {
-        super(word, "English");
-        this.lookUpUrl = "https://en.wiktionary.org/wiki/";
+        super(word, "English", "https://en.wiktionary.org/wiki/");
     }
 }
 class JapaneseWord extends Word {
     constructor(word) {
-        super(word, "Japanese");
-        this.lookUpUrl = "http://jisho.org/search/";
+        super(word, "Japanese", "http://jisho.org/search/");
     }
 }
 
