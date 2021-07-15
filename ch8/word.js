@@ -1,7 +1,4 @@
 class Word {
-    constructor(word) {
-        this.word = word;
-    }
     count() {
         return this.word.length;
     }
