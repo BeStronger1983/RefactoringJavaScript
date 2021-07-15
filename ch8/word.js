@@ -6,22 +6,21 @@ class Word {
     count() {
         return this.word.length;
     }
+    lookUp() {
+        return this.lookUpUrl + this.word;
+    }
 }
 
 class EnglishWord extends Word {
     constructor(word) {
         super(word, "English");
-    }
-    lookUp() {
-        return `https://en.wiktionary.org/wiki/${this.word}`;
+        this.lookUpUrl = "https://en.wiktionary.org/wiki/";
     }
 }
 class JapaneseWord extends Word {
     constructor(word) {
         super(word, "Japanese");
-    }
-    lookUp() {
-        return `http://jisho.org/search/${this.word}`;
+        this.lookUpUrl = "http://jisho.org/search/";
     }
 }
 
