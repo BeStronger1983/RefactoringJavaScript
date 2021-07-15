@@ -6,23 +6,22 @@ class Word {
     count() {
         return this.word.length;
     }
-    lookUp() {
-        if (this.language === "Japanese") {
-            return `http://jisho.org/search/${this.word}`;
-        } else {
-            return `https://en.wiktionary.org/wiki/${this.word}`;
-        }
-    }
 }
 
 class EnglishWord extends Word {
     constructor(word) {
         super(word, "English");
     }
+    lookUp() {
+        return `https://en.wiktionary.org/wiki/${this.word}`;
+    }
 }
 class JapaneseWord extends Word {
     constructor(word) {
         super(word, "Japanese");
+    }
+    lookUp() {
+        return `http://jisho.org/search/${this.word}`;
     }
 }
 
