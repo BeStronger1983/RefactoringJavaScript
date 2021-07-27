@@ -1,7 +1,4 @@
-function Word(word, language, lookUpUrl) {
-    this.word = word;
-    this.language = language;
-    this.lookUpUrl = lookUpUrl;
+function Word() {
     this.count = function () {
         return this.word.length;
     };
@@ -11,11 +8,17 @@ function Word(word, language, lookUpUrl) {
 }
 
 function EnglishWord(word) {
-    Word.call(this, word, "English", "https://en.wiktionary.org/wiki/");
+    Word.call(this);
+    this.word = word;
+    this.language = "English";
+    this.lookUpUrl = "https://en.wiktionary.org/wiki/";
 }
 
 function JapaneseWord(word) {
-    Word.call(this, word, "Japanese", "http://jisho.org/search/");
+    Word.call(this);
+    this.word = word;
+    this.language = "Japanese";
+    this.lookUpUrl = "http://jisho.org/search/";
 }
 
 JapaneseWord.prototype = Object.create(Word.prototype);
