@@ -18,7 +18,8 @@ function JapaneseWord(word) {
     Word.call(this, word, "Japanese", "http://jisho.org/search/");
 }
 
-// JapaneseWord.prototype = Object.create(Word.prototype);
+// 只要加入第一行就能修正這個問題
+JapaneseWord.prototype = Object.create(Word.prototype);
 // JapaneseWord.prototype.constructor = JapaneseWord;
 
 // EnglishWord.prototype = Object.create(Word.prototype);
