@@ -18,20 +18,19 @@ function JapaneseWord(word) {
     Word.call(this, word, "Japanese", "http://jisho.org/search/");
 }
 
-// 只要加入第一行就能修正這個問題
-JapaneseWord.prototype = Object.create(Word.prototype);
+// 即使沒有這幾行，到各屬性的連結依然沒問題
+// JapaneseWord.prototype = Object.create(Word.prototype);
 // JapaneseWord.prototype.constructor = JapaneseWord;
 
 // EnglishWord.prototype = Object.create(Word.prototype);
 // EnglishWord.prototype.constructor = EnglishWord;
 
-// 如果沒有前四行的話，japaneseWord 會不認識它的祖先
-Word.prototype.reportLanguage = function () {
-    return `The language is: ${this.language}`;
-};
+// Word.prototype.reportLanguage = function () {
+//     return `The language is: ${this.language}`;
+// };
 
 const japaneseWord = new JapaneseWord("犬");
-console.log(japaneseWord.reportLanguage());
+// console.log(japaneseWord.reportLanguage());
 const englishWord = new EnglishWord("dog");
 console.log(japaneseWord.word);
 console.log(japaneseWord.count());
