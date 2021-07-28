@@ -1,4 +1,4 @@
-// 物件字面值
+// 物件字面值在簡單的情況中看起來非常棒，但一旦需要創建很多單字，相較於使用 new 搭配 class 或建構子函式，就會顯得很笨重
 const word = {
     count() {
         return this.word.length;
@@ -8,21 +8,25 @@ const word = {
     },
 };
 
-// 改用 Object.assign 來結合物件，而非逐一更新
-// 修改變數的值容易造成問題，所以這個方法比較好
-// 第一個參數不用 word 的原因是 Object.assign 的第一個參數是目標物件
-// 所以寫 word 會破壞本源
-const englishWord = Object.assign(Object.create(word), {
-    word: "dog",
-    language: "English",
-    lookUpUrl: "https://en.wiktionary.org/wiki/",
-});
+// 另一種替代方案：工廠函式
+const englishWordFactory = (theWord) => {
+    return Object.assign(Object.create(word), {
+        word: theWord,
+        language: "English",
+        lookUpUrl: "https://en.wiktionary.org/wiki/",
+    });
+};
 
-const japaneseWord = Object.assign(Object.create(word), {
-    word: "犬",
-    language: "Japanese",
-    lookUpUrl: "http://jisho.org/search/",
-});
+const japaneseWordFactory = (theWord) => {
+    return Object.assign(Object.create(word), {
+        word: theWord,
+        language: "Japanese",
+        lookUpUrl: "http://jisho.org/search/",
+    });
+};
+
+const englishWord = englishWordFactory("dog");
+const japaneseWord = japaneseWordFactory("犬");
 
 console.log(japaneseWord.word);
 console.log(japaneseWord.count());
