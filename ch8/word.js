@@ -18,9 +18,9 @@ function JapaneseWord(word) {
     Word.call(this, word, "Japanese", "http://jisho.org/search/");
 }
 
-// 即使沒有這幾行，到各屬性的連結依然沒問題
-// JapaneseWord.prototype = Object.create(Word.prototype);
-// JapaneseWord.prototype.constructor = JapaneseWord;
+// 連結 prototype 與 constructor
+JapaneseWord.prototype = Object.create(Word.prototype);
+JapaneseWord.prototype.constructor = JapaneseWord;
 
 // EnglishWord.prototype = Object.create(Word.prototype);
 // EnglishWord.prototype.constructor = EnglishWord;
@@ -52,17 +52,18 @@ wish(englishWord.lookUp() === "https://en.wiktionary.org/wiki/dog");
 wish(englishWord.count() === 3);
 
 // 內部測試
-// wish(typeof japaneseWord === "object");
-// wish(typeof JapaneseWord === "function");
-// wish(japaneseWord instanceof JapaneseWord);
-// wish(japaneseWord instanceof Word);
-// wish(!(JapaneseWord instanceof Word));
+wish(typeof japaneseWord === "object");
+wish(typeof JapaneseWord === "function");
+wish(japaneseWord instanceof JapaneseWord);
+wish(japaneseWord instanceof Word);
+wish(!(JapaneseWord instanceof Word));
 
-// wish(japaneseWord.constructor === JapaneseWord);
+wish(japaneseWord.constructor === JapaneseWord);
 // wish(Object.getPrototypeOf(JapaneseWord) === Word);
-// console.log(Object.getPrototypeOf(JapaneseWord));
+console.log(Object.getPrototypeOf(JapaneseWord));
 
 // 模糊點
 // wish(deepEqual(Object.getPrototypeOf(japaneseWord), {}));
-// console.log(Object.getPrototypeOf(japaneseWord));
-// 回報 JapaneseWord {}
+console.log(Object.getPrototypeOf(japaneseWord));
+
+// 有註解的測試都不會過
