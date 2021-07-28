@@ -18,9 +18,9 @@ function JapaneseWord(word) {
     Word.call(this, word, "Japanese", "http://jisho.org/search/");
 }
 
-// 連結 prototype 與 constructor
+// 如果只有第一行
 JapaneseWord.prototype = Object.create(Word.prototype);
-JapaneseWord.prototype.constructor = JapaneseWord;
+// JapaneseWord.prototype.constructor = JapaneseWord;
 
 // EnglishWord.prototype = Object.create(Word.prototype);
 // EnglishWord.prototype.constructor = EnglishWord;
@@ -58,12 +58,11 @@ wish(japaneseWord instanceof JapaneseWord);
 wish(japaneseWord instanceof Word);
 wish(!(JapaneseWord instanceof Word));
 
-wish(japaneseWord.constructor === JapaneseWord);
+// 這個測試也過不了
+// wish(japaneseWord.constructor === JapaneseWord);
 // wish(Object.getPrototypeOf(JapaneseWord) === Word);
 console.log(Object.getPrototypeOf(JapaneseWord));
 
 // 模糊點
 // wish(deepEqual(Object.getPrototypeOf(japaneseWord), {}));
 console.log(Object.getPrototypeOf(japaneseWord));
-
-// 有註解的測試都不會過
