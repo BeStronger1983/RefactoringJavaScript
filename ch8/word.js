@@ -8,15 +8,21 @@ const word = {
     },
 };
 
-const englishWord = Object.create(word);
-englishWord.word = "dog";
-englishWord.language = "English";
-englishWord.lookUpUrl = "https://en.wiktionary.org/wiki/";
+// 改用 Object.assign 來結合物件，而非逐一更新
+// 修改變數的值容易造成問題，所以這個方法比較好
+// 第一個參數不用 word 的原因是 Object.assign 的第一個參數是目標物件
+// 所以寫 word 會破壞本源
+const englishWord = Object.assign(Object.create(word), {
+    word: "dog",
+    language: "English",
+    lookUpUrl: "https://en.wiktionary.org/wiki/",
+});
 
-const japaneseWord = Object.create(word);
-japaneseWord.word = "犬";
-japaneseWord.language = "Japanese";
-japaneseWord.lookUpUrl = "http://jisho.org/search/";
+const japaneseWord = Object.assign(Object.create(word), {
+    word: "犬",
+    language: "Japanese",
+    lookUpUrl: "http://jisho.org/search/",
+});
 
 console.log(japaneseWord.word);
 console.log(japaneseWord.count());
@@ -52,3 +58,5 @@ wish(typeof japaneseWord === "object");
 // 模糊點
 // wish(deepEqual(Object.getPrototypeOf(japaneseWord), {}));
 console.log(Object.getPrototypeOf(japaneseWord));
+// 印出 { count: [Function: count], lookUp: [Function: lookUp] }
+// japaneseWord 的原型改變了
