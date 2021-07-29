@@ -29,8 +29,9 @@ const englishWord = englishWordFactory("dog");
 const japaneseWord = japaneseWordFactory("犬");
 
 // 添加原型
-englishWord.prototype = word;
-japaneseWord.prototype = word;
+// 這兩行，譯者覺得沒有意義
+// englishWord.prototype = word;
+// japaneseWord.prototype = word;
 
 word.reportLanguage = function () {
     return `The Language is ${this.language}`;
