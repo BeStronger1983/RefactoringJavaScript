@@ -28,6 +28,20 @@ const japaneseWordFactory = (theWord) => {
 const englishWord = englishWordFactory("dog");
 const japaneseWord = japaneseWordFactory("犬");
 
+// 添加原型
+englishWord.prototype = word;
+japaneseWord.prototype = word;
+
+word.reportLanguage = function () {
+    return `The Language is ${this.language}`;
+};
+
+console.log(japaneseWord.reportLanguage());
+console.log(englishWord.reportLanguage());
+
+console.log(Object.getPrototypeOf(englishWord));
+console.log(Object.getPrototypeOf(japaneseWord));
+
 console.log(japaneseWord.word);
 console.log(japaneseWord.count());
 console.log(japaneseWord.lookUp());
@@ -61,6 +75,6 @@ wish(typeof japaneseWord === "object");
 
 // 模糊點
 // wish(deepEqual(Object.getPrototypeOf(japaneseWord), {}));
-console.log(Object.getPrototypeOf(japaneseWord));
+// console.log(Object.getPrototypeOf(japaneseWord));
 // 印出 { count: [Function: count], lookUp: [Function: lookUp] }
 // japaneseWord 的原型改變了
