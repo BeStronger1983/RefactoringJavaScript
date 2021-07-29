@@ -1,44 +1,47 @@
-// 物件字面值在簡單的情況中看起來非常棒，但一旦需要創建很多單字，相較於使用 new 搭配 class 或建構子函式，就會顯得很笨重
-const word = {
-    count() {
-        return this.word.length;
-    },
-    lookUp() {
-        return this.lookUpUrl + this.word;
-    },
+// 物件很多時會變得很繁瑣，可以這樣採用工廠函式
+const wordFactory = function () {
+    return {
+        count() {
+            return this.word.length;
+        },
+        lookUp() {
+            return this.lookUpUrl + this.word;
+        },
+    };
 };
 
-// 另一種替代方案：工廠函式
 const englishWordFactory = (theWord) => {
-    return Object.assign(Object.create(word), {
+    let copy = Object.assign(wordFactory(), {
         word: theWord,
         language: "English",
         lookUpUrl: "https://en.wiktionary.org/wiki/",
     });
+
+    return Object.setPrototypeOf(copy, wordFactory);
 };
 
 const japaneseWordFactory = (theWord) => {
-    return Object.assign(Object.create(word), {
+    let copy = Object.assign(wordFactory(), {
         word: theWord,
         language: "Japanese",
         lookUpUrl: "http://jisho.org/search/",
     });
+
+    return Object.setPrototypeOf(copy, wordFactory);
 };
 
 const englishWord = englishWordFactory("dog");
 const japaneseWord = japaneseWordFactory("犬");
 
-// 添加原型
-// 這兩行，譯者覺得沒有意義
-// englishWord.prototype = word;
-// japaneseWord.prototype = word;
-
-word.reportLanguage = function () {
+wordFactory.reportLanguage = function () {
     return `The Language is ${this.language}`;
 };
 
 console.log(japaneseWord.reportLanguage());
 console.log(englishWord.reportLanguage());
+
+// word 並不一定需要工廠函式，但這避免了為它建造原型這個步驟，雖然在一個 language 工廠函式中手動設定原型看起來很麻煩
+// 但如果有太多物件，手動的為每一個 word 實例設定原型只會更糟
 
 console.log(Object.getPrototypeOf(englishWord));
 console.log(Object.getPrototypeOf(japaneseWord));
