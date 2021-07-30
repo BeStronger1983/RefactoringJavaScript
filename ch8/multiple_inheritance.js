@@ -22,8 +22,8 @@ const animal = {
     },
 };
 
-// 用 mixin 達成多重繼承
-const myPet = Object.assign(Object.create(animal), barky, bitey);
+// 希望新的物件能有相同行為，但又不想要原型的包袱，可以這樣做
+const myPet = Object.assign({}, animal, barky, bitey);
 myPet.bark();
 myPet.bite();
 myPet.beFluffy();
@@ -42,9 +42,9 @@ animal.beFluffy = function () {
 myPet.beFluffy();
 // not fluffy
 
-// 甚至可以新增一個屬性到 animal 並同時使得 myPet 也發生改變
+// 為 animal 添加屬性，但不影響 myPet
 animal.hasBankAccount = false;
-console.log(myPet.hasBankAccount);
+console.log(myPet.hasBankAccount); // undefined
 
 // 如果我們試圖去擴展 bite 函式
 bitey.bite = function () {
