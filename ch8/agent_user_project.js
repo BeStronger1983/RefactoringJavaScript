@@ -43,3 +43,6 @@ if (agent.type === "user") {
 } else {
     wish(agent.sayTheName() === "the project name is name");
 }
+
+wish(new User("name", "user").sayName() === "my name is name");
+wish(new Project("name", "project").sayTheName() === "the project name is name");
