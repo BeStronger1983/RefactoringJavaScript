@@ -1,14 +1,5 @@
-class Report {
-    constructor(params) {
-        this.params = params;
-    }
-    printReport(params) {
-        return params;
-    }
-}
+// 如果只有 GenericReport 在使用 Report，那 Report 就可以刪除了。
 
-// 刪除 extends Report 會發生錯誤，因為 this.params 沒初始化過。
-// 自定 constructor 後就可以切斷與父類別之間的連結了。
 class GenericReport {
     constructor(params) {
         this.params = params;
