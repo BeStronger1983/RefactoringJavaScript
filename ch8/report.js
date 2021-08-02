@@ -42,4 +42,5 @@ console.log(report.printReport({ extra: "params" }), true);
 
 const wish = require("wish");
 const deepEqual = require("deep-equal");
-wish(report.printReport({ extra: "params" }), true);
+// 拿錯誤訊息來更新描述測試
+wish(deepEqual(report.printReport({ extra: "params" }), { whatever: "we want", to: "add", extra: "params" }));
