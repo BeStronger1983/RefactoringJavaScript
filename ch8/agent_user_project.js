@@ -39,7 +39,7 @@ const projectOrUser = Agent.makeProjetOrUser(agent);
 const wish = require("wish");
 
 if (projectOrUser.type === "user") {
-    wish(projectOrUser.sayName(), true);
+    wish(projectOrUser.sayName() === "my name is name");
 } else {
-    wish(projectOrUser.sayTheName(), true);
+    wish(projectOrUser.sayTheName() === "the project name is name");
 }
