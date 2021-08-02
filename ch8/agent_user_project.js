@@ -1,10 +1,15 @@
 // 狼養的羊與狼種的高麗菜
 
+// 將投擲硬幣的時刻移到函式
+function coinToss() {
+    return Math.random() > 0.5;
+}
+
 class Agent {
     constructor(name, type) {
         this.name = "name";
 
-        if (Math.random() > 0.5) {
+        if (coinToss()) {
             this.type = "user";
         } else {
             this.type = "project";
