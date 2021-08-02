@@ -7,13 +7,8 @@ function coinToss() {
 
 class Agent {
     constructor(name, type) {
-        this.name = "name";
-
-        if (coinToss()) {
-            this.type = "user";
-        } else {
-            this.type = "project";
-        }
+        this.name = name;
+        this.type = type;
     }
 
     static makeProjetOrUser(agent) {
@@ -37,8 +32,14 @@ class Project extends Agent {
     }
 }
 
-// 問題的根源是這兩行
-const agent = new Agent("name");
+let agent;
+// 把 coinToss 移出建構子之外，在 agent 之前使用 coinToss
+if (coinToss()) {
+    agent = new Agent("name", "user");
+} else {
+    agent = new Agent("name", "project");
+}
+
 const projectOrUser = Agent.makeProjetOrUser(agent);
 
 // 加入描述測試
