@@ -7,9 +7,12 @@ class Report {
     }
 }
 
-class GenericReport extends Report {
-    // 刪除 constructor，因為 super 做的事情很多餘。
-    // printReport 的 super 只是單純回傳 params，所以不用回傳。
+// 刪除 extends Report 會發生錯誤，因為 this.params 沒初始化過。
+// 自定 constructor 後就可以切斷與父類別之間的連結了。
+class GenericReport {
+    constructor(params) {
+        this.params = params;
+    }
     printReport(params) {
         return Object.assign(this.params, params);
     }
