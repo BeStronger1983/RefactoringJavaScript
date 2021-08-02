@@ -34,3 +34,12 @@ class Project extends Agent {
 
 const agent = new Agent("name");
 const projectOrUser = Agent.makeProjetOrUser(agent);
+
+// 加入描述測試
+const wish = require("wish");
+
+if (projectOrUser.type === "user") {
+    wish(projectOrUser.sayName(), true);
+} else {
+    wish(projectOrUser.sayTheName(), true);
+}
