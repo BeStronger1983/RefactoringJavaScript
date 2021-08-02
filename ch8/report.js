@@ -39,3 +39,7 @@ class SpecificClientReport extends ClientReport {
 
 const report = new SpecificClientReport({ whatever: "we want", to: "add" });
 console.log(report.printReport({ extra: "params" }), true);
+
+const wish = require("wish");
+const deepEqual = require("deep-equal");
+wish(report.printReport({ extra: "params" }), true);
