@@ -8,12 +8,10 @@ class Report {
 }
 
 class GenericReport extends Report {
-    constructor(params) {
-        super(params);
-        this.params = params;
-    }
+    // 刪除 constructor，因為 super 做的事情很多餘。
+    // printReport 的 super 只是單純回傳 params，所以不用回傳。
     printReport(params) {
-        return super.printReport(Object.assign(this.params, params));
+        return Object.assign(this.params, params);
     }
 }
 
