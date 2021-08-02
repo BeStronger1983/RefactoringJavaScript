@@ -1,6 +1,6 @@
-// 如果只有 GenericReport 在使用 Report，那 Report 就可以刪除了。
+// GenericReport 可以改名為 Report
 
-class GenericReport {
+class Report {
     constructor(params) {
         this.params = params;
     }
@@ -11,5 +11,5 @@ class GenericReport {
 
 const wish = require("wish");
 const deepEqual = require("deep-equal");
-const report = new GenericReport({ whatever: "we want", to: "add" });
+const report = new Report({ whatever: "we want", to: "add" });
 wish(deepEqual(report.printReport({ extra: "params" }), { whatever: "we want", to: "add", extra: "params" }));
