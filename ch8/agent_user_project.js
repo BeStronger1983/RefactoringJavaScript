@@ -6,9 +6,8 @@ function coinToss() {
 }
 
 class User {
-    constructor(name, type) {
+    constructor(name) {
         this.name = name;
-        this.type = type;
     }
 
     sayName() {
@@ -17,9 +16,8 @@ class User {
 }
 
 class Project {
-    constructor(name, type) {
+    constructor(name) {
         this.name = name;
-        this.type = type;
     }
 
     sayTheName() {
@@ -30,19 +28,19 @@ class Project {
 let agent;
 // 直接呼叫這些建構子
 if (coinToss()) {
-    agent = new User("name", "user");
+    agent = new User("name");
 } else {
-    agent = new Project("name", "project");
+    agent = new Project("name");
 }
 
 // 加入描述測試
 const wish = require("wish");
 
-if (agent.type === "user") {
+if (agent instanceof User) {
     wish(agent.sayName() === "my name is name");
 } else {
     wish(agent.sayTheName() === "the project name is name");
 }
 
-wish(new User("name", "user").sayName() === "my name is name");
-wish(new Project("name", "project").sayTheName() === "the project name is name");
+wish(new User("name").sayName() === "my name is name");
+wish(new Project("name").sayTheName() === "the project name is name");
