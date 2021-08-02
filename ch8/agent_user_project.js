@@ -21,23 +21,37 @@ class Agent {
 }
 
 class User extends Agent {
+    // 推入建構子到子類別
+    constructor(name, type) {
+        super();
+        this.name = name;
+        this.type = type;
+    }
+
     sayName() {
         return `my name is ${this.name}`;
     }
 }
 
 class Project extends Agent {
+    // 推入建構子到子類別
+    constructor(name, type) {
+        super();
+        this.name = name;
+        this.type = type;
+    }
+
     sayTheName() {
         return `the project name is ${this.name}`;
     }
 }
 
 let agent;
-// 把 coinToss 移出建構子之外，在 agent 之前使用 coinToss
+// 直接呼叫這些建構子
 if (coinToss()) {
-    agent = new Agent("name", "user");
+    agent = new User("name", "user");
 } else {
-    agent = new Agent("name", "project");
+    agent = new Project("name", "project");
 }
 
 const projectOrUser = Agent.makeProjetOrUser(agent);
