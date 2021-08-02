@@ -32,6 +32,7 @@ class Project extends Agent {
     }
 }
 
+// 問題的根源是這兩行
 const agent = new Agent("name");
 const projectOrUser = Agent.makeProjetOrUser(agent);
 
