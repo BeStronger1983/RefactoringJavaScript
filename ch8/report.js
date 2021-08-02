@@ -37,12 +37,11 @@ class SpecificClientReport extends ClientReport {
     }
 }
 
-// 假設 SpecificClientReport 沒有特別之處，改為 Report
-const report = new Report({ whatever: "we want", to: "add" });
+// 改為 GenericReport
+const report = new GenericReport({ whatever: "we want", to: "add" });
 console.log(report.printReport({ extra: "params" }), true);
 
 const wish = require("wish");
 const deepEqual = require("deep-equal");
-// 測試通過，可以安全的重構
 wish(deepEqual(report.printReport({ extra: "params" }), { whatever: "we want", to: "add", extra: "params" }));
-// 發生錯誤
+// 測試通過，表示可以刪除 ClientReport 跟 SpecificClientReport
