@@ -44,3 +44,8 @@ if (agent instanceof User) {
 
 wish(new User("name").sayName() === "my name is name");
 wish(new Project("name").sayTheName() === "the project name is name");
+
+// 如果有兩個共享某些狀態或行為的類別，子類別未必是去除重複的好方法
+// 可能會導致走上無盡進行型別檢查的道路
+// 有時候只是需要一個 type 屬性
+// 其他時候，可能能夠提取重複部分成為一個函式或其他物件
