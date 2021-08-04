@@ -1,24 +1,18 @@
-// 如果在建構子中加入一個用以儲存型別的變數，其實可以避免使用子類別
+// 在創造 personOne 與 personTwo 物件之後為它們加入函式，可以避免型別檢查
 class Person {
-    constructor(knowsBinary) {
-        this.knowsBinary = knowsBinary;
-    }
-
     log(number) {
         console.log(this.whatIs(number));
     }
-
-    whatIs(number) {
-        if (this.knowsBinary) {
-            return Number("0b" + number);
-        } else {
-            return number;
-        }
-    }
 }
 
-const personOne = new Person(true);
-const personTwo = new Person(false);
+const personOne = new Person();
+personOne.whatIs = (number) => {
+    return Number("0b" + number);
+};
+const personTwo = new Person();
+personTwo.whatIs = (number) => {
+    return number;
+};
 
 [(personOne, personTwo)].forEach((person) => {
     person.log(10);
