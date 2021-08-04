@@ -1,4 +1,4 @@
-// 在建構物件時加入額外的函式，也可以避免型別檢查
+// 命名並提取這些函式，以簡化建構子
 class Person {
     constructor(whatIs) {
         this.whatIs = whatIs;
@@ -9,13 +9,16 @@ class Person {
     }
 }
 
-const personOne = new Person((number) => {
+function binaryAware(number) {
     return Number("0b" + number);
-});
+}
 
-const personTwo = new Person((number) => {
+function binaryOblivious(number) {
     return number;
-});
+}
+
+const personOne = new Person(binaryAware);
+const personTwo = new Person(binaryOblivious);
 
 [personOne, personTwo].forEach((person) => {
     person.log(10);
