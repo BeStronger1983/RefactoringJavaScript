@@ -1,10 +1,7 @@
-// 狀態模式可以自然而然的由策略模式變化而來
-// 但是如果按照這種方法，策略模式可能很快地就會造成一團混亂
+// 最簡單的解法便是讓兩個物件分別包含認識二進位與不認識二進位時所擁有的知識
 class Person {
-    constructor(readKnowledge, andKnowledge, xorKnowledge) {
-        this.read = readKnowledge;
-        this.and = andKnowledge;
-        this.xor = xorKnowledge;
+    constructor(binaryKnowledge) {
+        this.binaryKnowledge = binaryKnowledge;
     }
 
     log(number) {
@@ -12,32 +9,41 @@ class Person {
     }
 }
 
-const binary = {
-    readAware(number) {
+const binaryAwareness = {
+    read(number) {
         return Number("0b" + number);
     },
-    readOblivious(number) {
-        return number;
-    },
-    andAware(numberOne, numberTwo) {
+
+    and(numberOne, numberTwo) {
         return numberOne & numberTwo;
     },
-    andOblivious(numberOne, numberTwo) {
-        return "unknown";
-    },
-    xorAware(numberOne, numberTwo) {
+
+    xor(numberOne, numberTwo) {
         return numberOne ^ numberTwo;
     },
-    xorOblivious(numberOne, numberTwo) {
+};
+
+const binaryObliviousness = {
+    read(number) {
+        return number;
+    },
+
+    and(numberOne, numberTwo) {
+        return "unknown";
+    },
+
+    xor(numberOne, numberTwo) {
         return "unknown";
     },
 };
 
-const personOne = new Person(binary.readAware, binary.andAware, binary.xorAware);
-const personTwo = new Person(binary.readOblivious, binary.andOblivious, binary.xorOblivious);
+const personOne = new Person(binaryAwareness);
+const personTwo = new Person(binaryObliviousness);
 
 [personOne, personTwo].forEach((person) => {
-    console.log(person.read(10));
-    console.log(person.and(2, 3));
-    console.log(person.xor(2, 3));
+    console.log(person.binaryKnowledge.read(10));
+    console.log(person.binaryKnowledge.and(2, 3));
+    console.log(person.binaryKnowledge.xor(2, 3));
 });
+
+// 像這樣將物件直接連結到其他的物件相當方便，但無法避免 read、and、xor 函式被重新宣告
