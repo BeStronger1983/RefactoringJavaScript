@@ -1,28 +1,28 @@
-class Person {
-    constructor(typeOfPerson) {
-        this.typeOfPerson = typeOfPerson;
-    }
+// 不再使用一個變數來讓輸出函式知道它要執行的任務，而是使用子類別來去除條件判斷
+class Person {}
 
-    whatIs(number) {
-        return number;
+class BinaryKnower extends Person {
+    log(number) {
+        console.log(this.whatIsInBinary(10));
     }
 
     whatIsInBinary(number) {
         return Number("0b" + number);
     }
+}
 
-    // 降低 API 的複雜度，將條件判斷式移至 Person 內
+class BinaryOblivious extends Person {
     log(number) {
-        if (this.typeOfPerson === "binary knower") {
-            console.log(this.whatIsInBinary(10));
-        } else {
-            console.log(this.whatIs(10));
-        }
+        console.log(this.whatIs(10));
+    }
+
+    whatIs(number) {
+        return number;
     }
 }
 
-const personOne = new Person("binary knower");
-const personTwo = new Person("binary oblivious");
+const personOne = new BinaryKnower();
+const personTwo = new BinaryOblivious();
 
 [personOne, personTwo].forEach((person) => {
     person.log(10);
