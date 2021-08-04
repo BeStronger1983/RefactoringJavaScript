@@ -1,21 +1,17 @@
-// 不再使用一個變數來讓輸出函式知道它要執行的任務，而是使用子類別來去除條件判斷
-class Person {}
+class Person {
+    // log 函式略為重複冗長，移至 Person 中
+    log(number) {
+        console.log(this.whatIs(number));
+    }
+}
 
 class BinaryKnower extends Person {
-    log(number) {
-        console.log(this.whatIsInBinary(number));
-    }
-
-    whatIsInBinary(number) {
+    whatIs(number) {
         return Number("0b" + number);
     }
 }
 
 class BinaryOblivious extends Person {
-    log(number) {
-        console.log(this.whatIs(number));
-    }
-
     whatIs(number) {
         return number;
     }
