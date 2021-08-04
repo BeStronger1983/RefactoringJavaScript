@@ -1,25 +1,18 @@
-// 一個函數式變種
-// 如果想用物件導向，那之前的做法比較好。
-// 如果偏向函數式，這個方法是一個好選擇。
-function log(person, number) {
-    console.log(person.whatIs(number));
+// 一個不需要額外兩個類別的例子
+function log(fun, number) {
+    console.log(fun(number));
 }
 
-class BinaryKnower {
-    whatIs(number) {
-        return Number("0b" + number);
-    }
+function whatIsBinary(number) {
+    return Number("0b" + number);
 }
 
-class BinaryOblivious {
-    whatIs(number) {
-        return number;
-    }
+function whatIs(number) {
+    return number;
 }
 
-const personOne = new BinaryKnower();
-const personTwo = new BinaryOblivious();
-
-[personOne, personTwo].forEach((person) => {
-    log(person, 10);
+[whatIsBinary, whatIs].forEach((fun) => {
+    log(fun, 10);
 });
+
+// 在實際應用中，我們比較偏好使用 Person 物件，此時相較於只使用函式，使用類別或物件通常較為妥當。
