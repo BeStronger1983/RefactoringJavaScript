@@ -3,7 +3,7 @@ class Person {}
 
 class BinaryKnower extends Person {
     log(number) {
-        console.log(this.whatIsInBinary(10));
+        console.log(this.whatIsInBinary(number));
     }
 
     whatIsInBinary(number) {
@@ -13,7 +13,7 @@ class BinaryKnower extends Person {
 
 class BinaryOblivious extends Person {
     log(number) {
-        console.log(this.whatIs(10));
+        console.log(this.whatIs(number));
     }
 
     whatIs(number) {
