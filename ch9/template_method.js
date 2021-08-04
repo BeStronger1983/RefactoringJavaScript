@@ -1,4 +1,3 @@
-// 嘗試將函式移動到 Person 物件中
 class Person {
     constructor(whatIs) {
         this.whatIs = whatIs;
@@ -7,23 +6,24 @@ class Person {
     log(number) {
         console.log(this.whatIs(number));
     }
-
-    static binaryAware(number) {
-        return Number("0b" + number);
-    }
-
-    static binaryOblivious(number) {
-        return number;
-    }
 }
 
-const personOne = new Person(Person.binaryAware);
-const personTwo = new Person(Person.binaryOblivious);
+// 為避免上述的耦合，我們創造一個包含此策略的物件
+// 策略被妥善的藏到了一個物件之中，這是非常方便的做法
+// 因為如果我們需要創造一個函式來代表對數字的不同解讀法，例如八進位或十六進位
+// 我們並不需要創立一個全新的子類別
+const binary = {
+    aware(number) {
+        return Number("0b" + number);
+    },
+    oblivious(number) {
+        return number;
+    },
+};
+
+const personOne = new Person(binary.aware);
+const personTwo = new Person(binary.oblivious);
 
 [personOne, personTwo].forEach((person) => {
     person.log(10);
 });
-
-// 這是我們試圖避免的，在 Person(內容) 與是否理解二進位(策略)是不同層次之間的耦合
-// 因為是否理解二進位是我們之後希望留給其他物件的策略
-// 因此最好是將是否理解二進位以及 Person 物件分開
