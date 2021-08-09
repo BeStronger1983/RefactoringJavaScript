@@ -1,11 +1,11 @@
-// 最簡單的解法便是讓兩個物件分別包含認識二進位與不認識二進位時所擁有的知識
+// 完成狀態模式，定義物件之間的轉換
 class Person {
     constructor(binaryKnowledge) {
         this.binaryKnowledge = binaryKnowledge;
     }
 
-    log(number) {
-        console.log(this.whatIs(number));
+    change(binaryKnowledge) {
+        this.binaryKnowledge = binaryKnowledge;
     }
 }
 
@@ -21,6 +21,10 @@ const binaryAwareness = {
     xor(numberOne, numberTwo) {
         return numberOne ^ numberTwo;
     },
+
+    forget(person) {
+        person.change(binaryObliviousness);
+    },
 };
 
 const binaryObliviousness = {
@@ -35,6 +39,10 @@ const binaryObliviousness = {
     xor(numberOne, numberTwo) {
         return "unknown";
     },
+
+    learn(person) {
+        person.change(binaryAwareness);
+    },
 };
 
 const personOne = new Person(binaryAwareness);
@@ -46,4 +54,17 @@ const personTwo = new Person(binaryObliviousness);
     console.log(person.binaryKnowledge.xor(2, 3));
 });
 
-// 像這樣將物件直接連結到其他的物件相當方便，但無法避免 read、and、xor 函式被重新宣告
+personOne.binaryKnowledge.forget(personOne);
+personTwo.binaryKnowledge.learn(personTwo);
+
+console.log("after forget and learn");
+
+[personOne, personTwo].forEach((person) => {
+    console.log(person.binaryKnowledge.read(10));
+    console.log(person.binaryKnowledge.and(2, 3));
+    console.log(person.binaryKnowledge.xor(2, 3));
+});
+
+// 兩個可疑的地方
+// 1. 把 Person 傳遞到 forget 跟 learn 看起有點笨拙
+// 2. binaryKnowledge 仍暴露在會被重複定義的風險之中
