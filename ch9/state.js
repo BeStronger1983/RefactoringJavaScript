@@ -1,11 +1,11 @@
-// 完成狀態模式，定義物件之間的轉換
+// 用 Object.create 解決 binaryKnowledge 可能會被重複定義的問題
 class Person {
     constructor(binaryKnowledge) {
-        this.binaryKnowledge = binaryKnowledge;
+        this.binaryKnowledge = Object.create(binaryKnowledge);
     }
 
     change(binaryKnowledge) {
-        this.binaryKnowledge = binaryKnowledge;
+        this.binaryKnowledge = Object.create(binaryKnowledge);
     }
 }
 
@@ -64,7 +64,3 @@ console.log("after forget and learn");
     console.log(person.binaryKnowledge.and(2, 3));
     console.log(person.binaryKnowledge.xor(2, 3));
 });
-
-// 兩個可疑的地方
-// 1. 把 Person 傳遞到 forget 跟 learn 看起有點笨拙
-// 2. binaryKnowledge 仍暴露在會被重複定義的風險之中
