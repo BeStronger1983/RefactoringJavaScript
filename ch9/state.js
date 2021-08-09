@@ -1,11 +1,11 @@
-// 用 Object.create 解決 binaryKnowledge 可能會被重複定義的問題
+// 用 Object.assign 建立 binaryKnowledge 與 Person 之間的雙向連結
 class Person {
     constructor(binaryKnowledge) {
-        this.binaryKnowledge = Object.create(binaryKnowledge);
+        this.binaryKnowledge = Object.create(Object.assign({ person: this }, binaryKnowledge));
     }
 
     change(binaryKnowledge) {
-        this.binaryKnowledge = Object.create(binaryKnowledge);
+        this.binaryKnowledge = Object.create(Object.assign({ person: this }, binaryKnowledge));
     }
 }
 
@@ -22,8 +22,8 @@ const binaryAwareness = {
         return numberOne ^ numberTwo;
     },
 
-    forget(person) {
-        person.change(binaryObliviousness);
+    forget() {
+        this.person.change(binaryObliviousness);
     },
 };
 
@@ -40,8 +40,8 @@ const binaryObliviousness = {
         return "unknown";
     },
 
-    learn(person) {
-        person.change(binaryAwareness);
+    learn() {
+        this.person.change(binaryAwareness);
     },
 };
 
@@ -54,8 +54,8 @@ const personTwo = new Person(binaryObliviousness);
     console.log(person.binaryKnowledge.xor(2, 3));
 });
 
-personOne.binaryKnowledge.forget(personOne);
-personTwo.binaryKnowledge.learn(personTwo);
+personOne.binaryKnowledge.forget();
+personTwo.binaryKnowledge.learn();
 
 console.log("after forget and learn");
 
@@ -64,3 +64,20 @@ console.log("after forget and learn");
     console.log(person.binaryKnowledge.and(2, 3));
     console.log(person.binaryKnowledge.xor(2, 3));
 });
+
+console.log("before personTwo forget and set new read");
+
+[personOne, personTwo].forEach((person) => {
+    console.log(person.binaryKnowledge.read(10));
+});
+
+personTwo.binaryKnowledge.forget();
+personTwo.binaryKnowledge.read = () => "will not assign both";
+
+console.log("before personTwo forget and set new read");
+
+[personOne, personTwo].forEach((person) => {
+    console.log(person.binaryKnowledge.read(10));
+});
+
+// 修改 read 並不會影響其他物件
