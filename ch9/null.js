@@ -8,7 +8,7 @@ class Person {
 class AnonymousPerson extends Person {
     constructor() {
         super();
-        this.name = ""; // 就算改成空字串，也只是得到一個新的錯誤訊息
+        this.name = null; // 回到使用 null 的方法
     }
 }
 
@@ -18,8 +18,12 @@ console.log(personOne.name);
 console.log(personTwo.name);
 
 function capitalize(str) {
-    // 假如想對這些值做運算，就會遇到麻煩
-    return str[0].toUpperCase() + str.substring(1);
+    // capitalize 中要加入型別檢查
+    if (str == null) {
+        return null;
+    } else {
+        return str[0].toUpperCase() + str.substring(1);
+    }
 }
 
 console.log(capitalize(personOne.name));
