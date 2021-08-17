@@ -8,7 +8,7 @@ class Person {
 class AnonymousPerson extends Person {
     constructor() {
         super();
-        this.name = null;
+        this.name = ""; // 就算改成空字串，也只是得到一個新的錯誤訊息
     }
 }
 
@@ -23,4 +23,4 @@ function capitalize(str) {
 }
 
 console.log(capitalize(personOne.name));
-console.log(capitalize(personTwo.name)); // TypeError: Cannot read property '0' of null
+console.log(capitalize(personTwo.name)); // Cannot read property 'toUpperCase' of undefined
