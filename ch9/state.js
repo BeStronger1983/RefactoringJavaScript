@@ -74,7 +74,7 @@ console.log("before personTwo forget and set new read");
 personTwo.binaryKnowledge.forget();
 personTwo.binaryKnowledge.read = () => "will not assign both";
 
-console.log("before personTwo forget and set new read");
+console.log("after personTwo forget and set new read");
 
 [personOne, personTwo].forEach((person) => {
     console.log(person.binaryKnowledge.read(10));
