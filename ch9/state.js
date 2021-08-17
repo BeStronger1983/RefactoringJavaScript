@@ -71,7 +71,9 @@ console.log("before personTwo forget and set new read");
     console.log(person.binaryKnowledge.read(10));
 });
 
+// forget 不再需要顯式參數
 personTwo.binaryKnowledge.forget();
+// 修改 read 並不會影響其他物件
 personTwo.binaryKnowledge.read = () => "will not assign both";
 
 console.log("after personTwo forget and set new read");
@@ -79,5 +81,3 @@ console.log("after personTwo forget and set new read");
 [personOne, personTwo].forEach((person) => {
     console.log(person.binaryKnowledge.read(10));
 });
-
-// 修改 read 並不會影響其他物件
