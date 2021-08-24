@@ -38,5 +38,14 @@ function tigerify(str) {
     }
 }
 
-console.log(tigerify(capitalize(personOne.name))); // Tony, the tiger
-console.log(tigerify(capitalize(personTwo.name))); // null
+// 執行了另一個 null 檢查，好讓我們顯示空白字串
+function display(str) {
+    if (str === null) {
+        return "";
+    } else {
+        return str;
+    }
+}
+
+console.log(display(tigerify(capitalize(personOne.name)))); // Tony, the tiger
+console.log(display(tigerify(capitalize(personTwo.name)))); // 顯示空白字串
