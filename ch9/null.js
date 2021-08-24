@@ -1,4 +1,4 @@
-// null 物件模式
+// 未使用 null 物件
 class Person {
     constructor(name) {
         this.name = new NameString(name);
@@ -12,10 +12,16 @@ class AnonymousPerson extends Person {
     }
 }
 
-// 加入 NameString 與 NullString 類別
+// 使用鏡像介面的程式碼
 class NullString {
     capitalize() {
-        return null;
+        return this;
+    }
+    tigerify() {
+        return this;
+    }
+    display() {
+        return "";
     }
 }
 
@@ -42,4 +48,4 @@ class NameString extends String {
 personOne = new Person("tony");
 personTwo = new AnonymousPerson("tony");
 console.log(personOne.name.capitalize().tigerify().display()); // Tony, the tiger
-console.log(personTwo.name.capitalize()); // null
+console.log(personTwo.name.capitalize().tigerify().display()); // 空白字串
