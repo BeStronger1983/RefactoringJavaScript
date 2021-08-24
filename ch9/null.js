@@ -28,3 +28,11 @@ function capitalize(str) {
 
 console.log(capitalize(personOne.name));
 console.log(capitalize(personTwo.name)); // Cannot read property 'toUpperCase' of undefined
+
+// 如果字串是 null
+function tigerify(str) {
+    return `${str}, the tiger`;
+}
+
+console.log(tigerify(capitalize(personOne.name))); // Tony, the tiger
+console.log(tigerify(capitalize(personTwo.name))); // null, the tiger
