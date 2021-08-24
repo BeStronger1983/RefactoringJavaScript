@@ -29,10 +29,14 @@ function capitalize(str) {
 console.log(capitalize(personOne.name));
 console.log(capitalize(personTwo.name)); // Cannot read property 'toUpperCase' of undefined
 
-// 如果字串是 null
+// 試試其他的方法
 function tigerify(str) {
-    return `${str}, the tiger`;
+    if (str === null) {
+        return null;
+    } else {
+        return `${str}, the tiger`;
+    }
 }
 
 console.log(tigerify(capitalize(personOne.name))); // Tony, the tiger
-console.log(tigerify(capitalize(personTwo.name))); // null, the tiger
+console.log(tigerify(capitalize(personTwo.name))); // null
