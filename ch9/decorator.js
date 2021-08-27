@@ -15,6 +15,13 @@ function Cute(dog) {
     return cuteDog;
 }
 
+// 如果希望加入其他的特徵，只要額外設計類似的工廠函式即可
+function Trained(dog) {
+    const trainedDog = Object.create(dog);
+    trainedDog.cost = dog.cost + 60;
+    return trainedDog;
+}
+
 const test = require("tape");
 
 test("base dog price", (assert) => {
@@ -24,5 +31,10 @@ test("base dog price", (assert) => {
 
 test("cute dog price", (assert) => {
     assert.equal(Cute(new Dog().displayPrice(), "The dog costs $70."));
+    assert.end();
+});
+
+test("trained cute dog price", (assert) => {
+    assert.equal(Trained(Cute(new Dog())).displayPrice, "The dog costs $130.");
     assert.end();
 });
