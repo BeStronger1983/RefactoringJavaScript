@@ -8,6 +8,8 @@ class Dog {
     }
 }
 
+// 我們不希望產生 CuteTrainDog 這樣的 class，所以用裝飾器模式
+
 // 如果我們希望用特別的特徵來裝飾 dog，可以使用一個將 dog 作為參數的工廠函式
 function Cute(dog) {
     const cuteDog = Object.create(dog);
@@ -38,3 +40,8 @@ test("trained cute dog price", (assert) => {
     assert.equal(Trained(Cute(new Dog())).displayPrice, "The dog costs $130.");
     assert.end();
 });
+
+// 我們必須將工廠模式做成巢狀結構嗎？
+// 可以寫成 (new Dog).Cute().Trained(); 嗎？
+// 當然可以，但這需要修改原本的類別。
+// 這種設計模式的其中一個重點就是：我們不能也不想改變原本的類別。
