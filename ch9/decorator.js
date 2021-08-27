@@ -11,6 +11,6 @@ class Dog {
 const test = require("tape");
 
 test("base dog price", (assert) => {
-    assert.equal(new Dog().displayPrice(), "The dog costs $50");
+    assert.equal(new Dog().displayPrice(), "The dog costs $50.");
     assert.end();
 });
