@@ -29,4 +29,5 @@ const test = require("tape");
 test("Displaying a person", (assert) => {
     const personOne = new Person("tony");
     assert.equal(personOne.name.capitalize().tigerify().display(), "Tony, the tiger");
+    assert.end();
 });
