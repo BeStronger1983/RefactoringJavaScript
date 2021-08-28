@@ -27,6 +27,8 @@
 
 當 timeout 設定為 0 秒時，程式碼會被立刻執行嗎？會比同步的程式碼更快執行嗎？請看看[這個例子](./chicken_or_egg.js)。
 
+再看看[這個例子](./chickens_or_egg.js)，蛋永遠最快，但雞不一定，Chrome 跟 FireFox 的順序不同，但每次的結果一致。node 的執行結果不是每次都一樣。
+
 <h2 id="fix">修復「毀滅金字塔(pyramid of doom)」</h2>
 
 <h2 id="test">測試異步程式碼</h2>
