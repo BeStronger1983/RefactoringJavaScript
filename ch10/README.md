@@ -19,6 +19,8 @@
 
 以為會得到一個存放 chunk 的陣列，結果印出一個空的陣列 []。這是因為 http.get 會立刻返回，[而在 callback 將 chunk 存進陣列前，console.log 已經進行了](./in_other_words.js)。
 
+雖然可以等一下再來取得異步的執行結果，[但我們不能確定要等多久才夠](./unsure.js)。
+
 <h2 id="fix">修復「毀滅金字塔(pyramid of doom)」</h2>
 
 <h2 id="test">測試異步程式碼</h2>
