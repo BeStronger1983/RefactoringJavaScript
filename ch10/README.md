@@ -17,6 +17,8 @@
 
 上面的例子用了異步，而且有兩層，還用了函數式設計。如果試著在這段程式碼後面，[寫些同步程式設計的程式碼](./node_http_async_more_sync.js)，將會遇到更多挫折。
 
+以為會得到一個存放 chunk 的陣列，結果印出一個空的陣列 []。這是因為 http.get 會立刻返回，[而在 callback 將 chunk 存進陣列前，console.log 已經進行了](./in_other_words.js)。
+
 <h2 id="fix">修復「毀滅金字塔(pyramid of doom)」</h2>
 
 <h2 id="test">測試異步程式碼</h2>
