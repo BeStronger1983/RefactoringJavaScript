@@ -33,6 +33,22 @@ setTimeout 的方法有一些問題，看來我們最好回到[第一次異步�
 
 <h2 id="fix">修復「毀滅金字塔(pyramid of doom)」</h2>
 
+毀滅金字塔是指程式碼向右進行多次縮排所形成的形狀。
+
+```javascript
+levelOne(function(){
+    levelTwo(function(){
+        levelThree(function(){
+            levelFour(function(){
+                // 其他程式碼
+            })
+        });
+    });
+});
+```
+
+還有一個跟它相關的「回調地獄(callback hell)」，跟程式碼形狀比較無關，是用來形容很多層的 callback 函式。
+
 <h2 id="test">測試異步程式碼</h2>
 
 <h2 id="promise">Promises</h2>
