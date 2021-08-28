@@ -29,6 +29,8 @@
 
 再看看[這個例子](./chickens_or_egg.js)，蛋永遠最快，但雞不一定，Chrome 跟 FireFox 的順序不同，但每次的結果一致。node 的執行結果不是每次都一樣。
 
+setTimeout 的方法有一些問題，看來我們最好回到[第一次異步的做法](./node_http_async.js)。但這真的是最好的寫法嗎？
+
 <h2 id="fix">修復「毀滅金字塔(pyramid of doom)」</h2>
 
 <h2 id="test">測試異步程式碼</h2>
