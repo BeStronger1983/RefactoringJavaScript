@@ -45,3 +45,5 @@ window.onload = function () {
         page._events.push(event.target + " clicked at " + page.now());
     };
 };
+
+// 什麼時候不該使用外觀模式：當直接與 API 互動對所有人來說都非常簡單時
