@@ -1,15 +1,14 @@
-// 與 null.js 類似，但尚未創建 null 物件時的程式碼
 class Person {
     constructor(name) {
         this.name = new NameString(name);
     }
 }
 
-// 改變 AnonymousPerson 並加入 NullString
+// 假設我們現在動不了 AnonymousPerson
 class AnonymousPerson extends Person {
     constructor() {
         super();
-        this.name = new NullString(); // 修改到原本的程式碼，容易產生問題
+        this.name = null;
     }
 }
 
@@ -25,6 +24,7 @@ class NameString extends String {
     }
 }
 
+// 但我們新增 NullString 類別來應用裝飾器模式是沒問題的
 class NullString {
     capitalize() {
         return this;
@@ -37,6 +37,15 @@ class NullString {
     }
 }
 
+// 這些也是新的
+function WithoutNull(person) {
+    const personWithoutNull = Object.create(person);
+    if (personWithoutNull.name === null) {
+        personWithoutNull.name = new NullString();
+    }
+    return personWithoutNull;
+}
+
 const test = require("tape");
 
 test("Displaying a person", (assert) => {
@@ -47,6 +56,7 @@ test("Displaying a person", (assert) => {
 
 test("Displaying an anonymous person", (assert) => {
     const personTwo = new AnonymousPerson("tony");
-    assert.equal(personTwo.name.capitalize().tigerify().display(), "");
+    // 使用 WithoutNull 包覆 personTwo 是新的實作法
+    assert.equal(WithoutNull(personTwo).name.capitalize().tigerify().display(), "");
     assert.end();
 });
