@@ -49,6 +49,10 @@ levelOne(function(){
 
 還有一個跟它相關的「回調地獄(callback hell)」，跟程式碼形狀比較無關，是用來形容很多層的 callback 函式。
 
+<h2>將函式提取到物件中</h2>
+
+[回到上一節的程式碼](./extract_function_to_object.js)。
+
 <h1 id="test">測試異步程式碼</h2>
 
 <h1 id="promise">Promises</h2>
