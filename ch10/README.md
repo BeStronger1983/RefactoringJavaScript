@@ -6,7 +6,7 @@
 * [測試異步程式碼](#test)
 * [Promises](#promise)
 
-<h2 id="why">為什麼需要異步？</h2>
+<h1 id="why">為什麼需要異步？</h2>
 
 1. 我們希望程式是有效率的，不用等待幾秒、幾分甚至更長的時間來進行 web 請求、處理資料。
 2. 有些外部的模組、函式庫只提供異步。
@@ -21,7 +21,7 @@
 
 雖然可以等一下再來取得異步的執行結果，[但我們不能確定要等多久才夠](./unsure.js)。
 
-<h3>setTimeout 與 Event Loop</h3>
+<h2>setTimeout 與 Event Loop</h3>
 
 值得注意的是，setTimeout(myFunction, 300) 並非真的在 300 毫秒後執行 myFunction。首先它會返回一個 Timeout 物件，然後將 myFunction 加入 Event Loop 中，並在 300 毫秒後執行。但有可能因為 Event Loop 在執行其他事情而被卡住。
 
@@ -31,7 +31,7 @@
 
 setTimeout 的方法有一些問題，看來我們最好回到[第一次異步的做法](./node_http_async.js)。但這真的是最好的寫法嗎？
 
-<h2 id="fix">修復「毀滅金字塔(pyramid of doom)」</h2>
+<h1 id="fix">修復「毀滅金字塔(pyramid of doom)」</h2>
 
 毀滅金字塔是指程式碼向右進行多次縮排所形成的形狀。
 
@@ -49,6 +49,6 @@ levelOne(function(){
 
 還有一個跟它相關的「回調地獄(callback hell)」，跟程式碼形狀比較無關，是用來形容很多層的 callback 函式。
 
-<h2 id="test">測試異步程式碼</h2>
+<h1 id="test">測試異步程式碼</h2>
 
-<h2 id="promise">Promises</h2>
+<h1 id="promise">Promises</h2>
