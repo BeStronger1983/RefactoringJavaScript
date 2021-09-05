@@ -9,9 +9,9 @@ const getBody = {
         console.log(this.bodyArray.join(""));
     },
     getResult: function (result) {
-        result.on("data", this.saveBody);
-        result.on("end", this.printBody);
+        result.on("data", this.saveBody.bind(this));
+        result.on("end", this.printBody.bind(this));
     },
 };
 
-http.get("http://refactoringjs.com/", getBody.getResult);
+http.get("http://refactoringjs.com/", getBody.getResult.bind(getBody));
