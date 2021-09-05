@@ -51,7 +51,9 @@ levelOne(function(){
 
 <h2>將函式提取到物件中</h2>
 
-[回到上一節的程式碼](./extract_function_to_object.js)。
+[回到上一節的程式碼](./extract_function_to_object.js)。真的程式碼會更加複雜。這個例子同時具有「回調地獄」和「毀滅金字塔」。
+
+對於這種問題，已從書中先前的部分得到一些辦法。[提取函式並為它命名](./extract_function_and_name_it.js)。
 
 <h1 id="test">測試異步程式碼</h2>
 
