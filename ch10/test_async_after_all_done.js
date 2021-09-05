@@ -25,3 +25,11 @@ test("our async routine", function (assert) {
     };
     http.get("http://refactoringjs.com/", getBody.getResult.bind(getBody));
 });
+
+test("our async routine two", function (assert) {
+    getBody.bodyArray = [];
+    getBody.allDone = function () {};
+    http.get("http://refactoringjs.com/", getBody.getResult.bind(getBody));
+    assert.equal(getBody.bodyArray.length, 0);
+    assert.end();
+});
