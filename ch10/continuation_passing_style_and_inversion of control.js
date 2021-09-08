@@ -4,3 +4,10 @@ function addOne(addend) {
 }
 
 addOne(2);
+
+// 等價的 callback 版本
+function two(callback) {
+    callback(2);
+}
+
+two((addend) => console.log(addend + 1));
