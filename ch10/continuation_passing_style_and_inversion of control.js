@@ -31,3 +31,12 @@ function three(callback) {
 }
 
 three(addOne);
+
+// 試著寫出同步版本
+function three() {
+    setTimeout(function () {
+        return 3;
+    }, 500);
+}
+
+addOne(three()); // NaN
