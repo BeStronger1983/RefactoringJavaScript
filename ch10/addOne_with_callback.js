@@ -20,3 +20,13 @@ test("our addOne function", (assert) => {
         assert.end();
     });
 });
+
+// 單純回傳結果的話，addOne 函式及其測試會很不同
+function addOneSync(addend) {
+    return addend + 1;
+}
+
+test("our addOneSync function", (assert) => {
+    assert.equal(addOneSync(3), 4);
+    assert.end();
+});
