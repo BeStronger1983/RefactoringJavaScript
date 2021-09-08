@@ -39,3 +39,16 @@ test("our three function", (assert) => {
         assert.end();
     });
 });
+
+// 如果想要端對端測試，最好的選擇是使用 testdouble 來觀察 console.log 是否被以參數為 4 的形式呼叫
+const testDouble = require("testdouble");
+
+test("our end-to-end test", (assert) => {
+    testDouble.replace(console, "log");
+    three((result, callback) => {
+        addOne(result, callback);
+        testDouble.verify(console.log(4));
+        testDouble.reset();
+        assert.end();
+    });
+});
