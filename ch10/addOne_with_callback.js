@@ -30,3 +30,12 @@ test("our addOneSync function", (assert) => {
     assert.equal(addOneSync(3), 4);
     assert.end();
 });
+
+// three 函式無法用同步測試
+test("our three function", (assert) => {
+    three((result, callback) => {
+        assert.equal(result, 3);
+        assert.equal(callback, console.log);
+        assert.end();
+    });
+});
