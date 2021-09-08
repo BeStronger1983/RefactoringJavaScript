@@ -22,3 +22,12 @@ function addOne(addend) {
 }
 
 two(addOne);
+
+// 異步運行 three 函式
+function three(callback) {
+    setTimeout(function () {
+        callback(3);
+    }, 500);
+}
+
+three(addOne);
