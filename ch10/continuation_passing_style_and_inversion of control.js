@@ -11,3 +11,14 @@ function two(callback) {
 }
 
 two((addend) => console.log(addend + 1));
+
+// 提取並命名匿名函式
+function two(callback) {
+    callback(2);
+}
+
+function addOne(addend) {
+    console.log(addend + 1);
+}
+
+two(addOne);
