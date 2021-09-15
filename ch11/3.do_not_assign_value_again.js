@@ -44,9 +44,23 @@ function func4(x) {
     if ((x = x + 7) >= 9) {
         return x;
     } else {
-        return x + 5;
+        return x;
     }
 }
 
 console.log(func4(1));
 console.log(func4(2));
+
+// 先讓所有變數都不被改動
+function func5(x) {
+    if (x + 7 >= 9) {
+        return x + 7;
+    } else {
+        return x + 7;
+    }
+}
+
+// 可以寫成
+function fun6(x) {
+    return x + 7;
+}
