@@ -34,3 +34,21 @@ reduce 會基於陣列給出某個新值，如果想要取得聚合的值(和/�
 <h1>避免在條件式主體中重新賦值</h1>
 
 [程式碼](./6.avoid_set_value_again_in_if.js)
+
+<h1>避免破壞性函式</h1>
+
+[程式碼](./7.avoid_destructive_function.js)
+
+陣列有很多破壞性函式，包括 splice、fill、push、pop。
+
+物件則有 define Properties。
+
+數字和字串有 + 和 =。
+
+陣列也能改變特定索引位置的值。例如 x[0] = "something"
+
+物件有 Object.assign，但可以給它 {} 以避免破壞。
+
+.prop = 和 [prop] = 語法都能修改或創造屬性
+
+僅僅為了避免破壞而放棄直接賦值與大量函式看起來很瘋狂，但遵循這個原則，比在上千行程式碼中追蹤一堆遊蕩的全域變數要容易多了。
