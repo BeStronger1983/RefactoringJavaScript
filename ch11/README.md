@@ -1,5 +1,4 @@
-第十一章 使用函數式範式重構
-=
+# 第十一章 使用函數式範式重構
 
 [用迴圈尋找一個元素](./1.recursive.js)
 
@@ -17,13 +16,13 @@
 
 你可以迭代所有的值然後創造其他值，並可以用 for 迴圈或 forEach 實作它們全部
 
-* every
-* filter
-* find
-* forEach
-* map
-* reduce/reduceRight
-* some
+-   every
+-   filter
+-   find
+-   forEach
+-   map
+-   reduce/reduceRight
+-   some
 
 但何必呢？用正確的工具來做正確的工作。map 給你一個內部全被轉換過的陣列，every、filter、find、some 會基於提供的條件回傳某些東西。
 
@@ -62,3 +61,9 @@ reduce 會基於陣列給出某個新值，如果想要取得聚合的值(和/�
 <h1>別回傳 null</h2>
 
 [程式碼](./8.dont_return_null.js)
+
+<h1>引用透明與避免狀態</h2>
+
+引用透明(Referential Transparent)：能夠將這個函式的呼叫用回傳值取代，而不會改變整個程式的行為，稱為引用透明。
+
+[程式碼](./9.referential_transparent.js)
