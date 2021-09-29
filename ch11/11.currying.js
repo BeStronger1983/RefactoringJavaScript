@@ -1,4 +1,4 @@
-// 柯里化
+// 手動柯里化
 function add(numberOne, numberTwo) {
     return numberOne + numberTwo;
 }
