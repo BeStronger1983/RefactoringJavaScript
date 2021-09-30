@@ -117,3 +117,9 @@ reduce 會基於陣列給出某個新值，如果想要取得聚合的值(和/�
 Point-Free 的 Point 是拓樸學術語，而非 JavaScript 的「.」。
 
 [程式碼](./14.point_free_programming.js)
+
+<h2>當新增功能時，有兩種做法</h2>
+
+一是寫出更複雜的程式碼(在函式呼叫或函式定義中)，二是組合出新函式。
+
+[程式碼](./15.add_new_feature.js)
