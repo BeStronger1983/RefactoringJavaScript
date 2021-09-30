@@ -109,3 +109,11 @@ reduce 會基於陣列給出某個新值，如果想要取得聚合的值(和/�
 <h1 id="function_composition">函式組合</h1>
 
 [程式碼](./13.function_composition.js)
+
+<h2>無參數風格程式設計(Point-Free Programming)</h2>
+
+無參數風格是指可以對它應用參數，但不能給它一個名字(像是 data)然後直接操作它。
+
+Point-Free 的 Point 是拓樸學術語，而非 JavaScript 的「.」。
+
+[程式碼](./14.point_free_programming.js)
