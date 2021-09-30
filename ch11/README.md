@@ -91,8 +91,8 @@ reduce 會基於陣列給出某個新值，如果想要取得聚合的值(和/�
 <h1>進階基礎</h1>
 
 -   [柯里化(currying)](#currying)
--   部分應用(partial application)
--   函式組合(function composition)
+-   [部分應用(partial application)](#currying)
+-   [函式組合(function composition)](#function_composition)
 -   型別
 
 <h1 id="currying">柯里化與部分應用</h1>
@@ -105,3 +105,7 @@ reduce 會基於陣列給出某個新值，如果想要取得聚合的值(和/�
 毋庸置疑，this 比其他主題產生更多的疑惑。犧牲 this 可以換取彈性與簡潔。
 
 使用 this 使得函式變得不純，因為它的語境共享了可變的狀態。
+
+<h1 id="function_composition">函式組合</h1>
+
+[程式碼](./13.function_composition.js)
