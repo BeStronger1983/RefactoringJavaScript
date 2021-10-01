@@ -123,3 +123,7 @@ Point-Free 的 Point 是拓樸學術語，而非 JavaScript 的「.」。
 一是寫出更複雜的程式碼(在函式呼叫或函式定義中)，二是組合出新函式。
 
 [程式碼](./15.add_new_feature.js)
+
+<h2>於 Ramda 再遇記憶化</h2>
+
+[程式碼](./16.ramda_memoize.js)
