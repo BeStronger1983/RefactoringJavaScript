@@ -127,3 +127,5 @@ Point-Free 的 Point 是拓樸學術語，而非 JavaScript 的「.」。
 <h2>於 Ramda 再遇記憶化</h2>
 
 [程式碼](./16.ramda_memoize.js)
+
+Ramda 很棒，提供了許多能讓介面變得非常簡單的函式。建議看看它的[文件](https://ramdajs.com/docs/)。
