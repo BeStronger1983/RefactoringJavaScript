@@ -129,3 +129,11 @@ Point-Free 的 Point 是拓樸學術語，而非 JavaScript 的「.」。
 [程式碼](./16.ramda_memoize.js)
 
 Ramda 很棒，提供了許多能讓介面變得非常簡單的函式。建議看看它的[文件](https://ramdajs.com/docs/)。
+
+<h1>型別：最低限度</h1>
+
+<h2>關於型別</h2>
+
+<h2>型別較為不直覺的一面</h2>
+
+<h2>這樣沒問題嗎？</h2>
