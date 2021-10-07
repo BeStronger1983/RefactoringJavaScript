@@ -151,3 +151,5 @@ Ramda 很棒，提供了許多能讓介面變得非常簡單的函式。建議�
 [用裝飾器來包裝 null 物件](./18.null_decorator.js)
 
 [使用 Just 跟 Nothing 取代 null](./19.null_sanctuary.js)
+
+[以 Maybe 進行函數式重構](./20.maybe.js)
