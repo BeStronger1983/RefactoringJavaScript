@@ -1,5 +1,4 @@
 // 以 Maybe 進行函數式重構
-// 真無奈，作者給的程式又有錯誤
 const { create, env } = require("sanctuary");
 const S = create({ checkTypes: false, env: env });
 

@@ -1,5 +1,4 @@
 // 使用 Just 跟 Nothing 取代 null
-// 很不幸的，作者給的例子會出現 TypeError: personOne.name.map is not a function
 const { create, env } = require("sanctuary");
 const S = create({ checkTypes: false, env: env });
 
