@@ -55,7 +55,7 @@ test("Displaying a person", (assert) => {
 });
 
 test("Displaying an anonymous person", (assert) => {
-    const personTwo = new AnonymousPerson("tony");
+    const personTwo = new AnonymousPerson(null);
     // 使用 WithoutNull 包覆 personTwo 是新的實作法
     assert.equal(WithoutNull(personTwo).name.capitalize().tigerify().display(), "");
     assert.end();
