@@ -145,3 +145,7 @@ Ramda 很棒，提供了許多能讓介面變得非常簡單的函式。建議�
 <h2>Sanctuary 的格言</h2>
 
 「拒絕不安全的 JavaScript」。偏好給出 Nothing 和 Just 而不使用 null。這看起來不易掌握，但好過於「undefined method」給的驚喜。
+
+<h1>再會 null 物件模式</h1>
+
+[用裝飾器來包裝 null 物件](./18.null_decorator.js)
