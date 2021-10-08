@@ -163,3 +163,11 @@ Ramda 很棒，提供了許多能讓介面變得非常簡單的函式。建議�
 <h1>深入函數式程式設計</h1>
 
 這邊很難說明，建議直接看書。
+
+<h1>從 OOP 到 FP</h1>
+
+<h2>再會貝式分類器</h2>
+
+[貝式分類器的函數式版本](./22.functional_version_of_nbc.js)
+
+[測試程式碼](./23.functional_version_of_nbc_test.js)
