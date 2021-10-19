@@ -232,3 +232,29 @@ Ramda 很棒，提供了許多能讓介面變得非常簡單的函式。建議�
 <h2>重寫一個自己的版本</h2>
 
 如果有興趣重寫一個小專案，可以試試把 NBC 從 [OOP](../ch7/nb.js) 轉到 FP，或者是[過往的版本](../ch6/nb.js)直接轉到 FP。看看你做出來的結果與[上一節我們所完成的](./22.functional_version_of_nbc.js)是否類似。從頭開始還是漸進式改進比較容易？在進行之前先估計自己需要花多久的時間，然後看看自己的估計有多準確。
+
+<h1>總結</h1>
+
+本章討論了一些函數式程式設計的好處，包括：
+
+-   不重複使用變數
+-   避免共享狀態
+-   提取函式
+-   相較於 for 迴圈，優先使用 Array 的高階函式
+
+也探索了一些函數式程式設計的介面與函式庫(Ramda 與 Sanctuary)以及老朋友 Array，還有比較少見的 Maybe。
+
+也許函數式會成為你喜歡的範式，如果是這樣，可以試試 Haskell 這種更嚴格的語言。但如果覺得很嚇人，也可以用 require 去探索 FP 的介面，不必在所有程式碼中使用 FP。
+
+FP 博大精深，如果想深入，作者推薦的順序：
+
+1. 熟悉原生 JavaScript Array 的高階函式(以函式做輸入)，例如 forEach、map、filter、reduce。
+2. 試試 underscore 或 lodash，它們都提供了很多原生 JavaScript 沒提供的功能。
+3. 習慣用 Ramda 或和 Sanctuary 組合函式及操弄函數。
+4. 使用 Sanctuary、ramda-fantasy、Folktale 或其他 Fantasy Land 規格書的實作。
+
+除此之外，也試試：
+
+-   使用 Immutable.js 或 mori 來強制使用不可變性，它們的能力在 const 跟 .freeze 之上。
+-   試試編譯至 JavaScript 的函數式語言。
+-   試試不需編釋至 JavaScript 的函數式語言。
